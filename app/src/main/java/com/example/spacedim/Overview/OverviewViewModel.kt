@@ -57,6 +57,19 @@ class OverviewViewModel : ViewModel() {
             })
     }
 
+    //Exécute la fonction afin d'appeler la requête pour récuperer toutes les rooms
+    private fun getAllRoom() {
+        SpaceDimApi.retrofitService.getAllRoom().enqueue(
+            object : Callback<String> {
+                override fun onResponse(call: Call<String>, response: Response<String>) {
+                    _response.value = response.body()
+                }
+
+                override fun onFailure(call: Call<String>, t: Throwable) {
+                    _response.value = "Failure: " + t.message
+                }
+            })
+    }
 
     //Exécute la fonction afin d'appeler la requête pour récupérer le json de lié à l'utilisateur via l'id
     fun getPlayerById(id: Int) {

@@ -32,6 +32,11 @@ interface SpaceDimApiService {
     fun getPlayerByname(@Path("name") name: String):
             Call<String>
 
+    //Permets de récupérer les rooms
+    @GET("show")
+    fun getAllRoom():
+            Call<String>
+
     //Crée un utilisateur
     @Headers("Content-Type:application/json")
     @POST("api/user/register")
