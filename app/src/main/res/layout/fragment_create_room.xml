@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/rocketlaunched">
+
+        <TextView
+            android:id="@+id/mainTitle"
+            style="@style/activity_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="@string/join_a_room"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <fragment
+            android:id="@+id/fragment"
+            android:name="com.example.spacedim.SocketFragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="@+id/mainTitle"
+            app:layout_constraintStart_toStartOf="@+id/mainTitle"
+            app:layout_constraintTop_toBottomOf="@+id/mainTitle" />
+
+        <Button
+            android:id="@+id/joinRoom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/join_room"
+            app:layout_constraintEnd_toEndOf="@+id/fragment"
+            app:layout_constraintStart_toStartOf="@+id/fragment"
+            app:layout_constraintTop_toBottomOf="@+id/fragment" />
+
+        <TextView
+            android:id="@+id/joinRoomTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/no_room_joined"
+            android:textColor="@color/less_visible"
+            app:layout_constraintEnd_toEndOf="@+id/joinRoom"
+            app:layout_constraintStart_toStartOf="@+id/joinRoom"
+            app:layout_constraintTop_toBottomOf="@+id/joinRoom" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

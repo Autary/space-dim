@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.spacedim.LoginFragment"
+        android:label="@string/login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_createRoomFragment"
+            app:destination="@id/createRoomFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/createRoomFragment"
+        android:name="com.example.spacedim.CreateRoomFragment"
+        android:label="@string/waiting_room"
+        tools:layout="@layout/fragment_create_room" >
+        <action
+            android:id="@+id/action_createRoomFragment_to_waintingFragment"
+            app:destination="@id/waintingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/waintingFragment"
+        android:name="com.example.spacedim.WaintingFragment"
+        android:label="@string/waiting_room"
+        tools:layout="@layout/fragment_wainting" >
+        <action
+            android:id="@+id/action_waintingFragment_to_gameFragment"
+            app:destination="@id/gameFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/gameFragment"
+        android:name="com.example.spacedim.GameFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_game" >
+        <action
+            android:id="@+id/action_gameFragment_to_looseFragment"
+            app:destination="@id/looseFragment"
+            app:popUpTo="@id/waintingFragment" />
+        <action
+            android:id="@+id/action_gameFragment_to_winFragment"
+            app:destination="@id/winFragment"
+            app:popUpTo="@id/waintingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/looseFragment"
+        android:name="com.example.spacedim.LooseFragment"
+        android:label="@string/game_loose"
+        tools:layout="@layout/fragment_loose" >
+        <action
+            android:id="@+id/action_looseFragment_to_waintingFragment"
+            app:destination="@id/waintingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/winFragment"
+        android:name="com.example.spacedim.WinFragment"
+        android:label="@string/game_win"
+        tools:layout="@layout/fragment_win" >
+        <action
+            android:id="@+id/action_winFragment_to_waintingFragment"
+            app:destination="@id/waintingFragment" />
+    </fragment>
+</navigation>
