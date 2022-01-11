@@ -6,8 +6,8 @@ School project
 
 Team :
 
-DAVID Emma<br\>
-KELLER Morgane<br\>
-MAUCHE Gauthier<br\>
-PHOTHINANTHA Henri<br\>
-WADOUX Nicolas<br\>
+DAVID Emma
+KELLER Morgane
+MAUCHE Gauthier
+PHOTHINANTHA Henri
+WADOUX Nicolas
