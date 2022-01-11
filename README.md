@@ -3,10 +3,11 @@
 School project
 --------------
 
+
 Team :
 
-DAVID Emma__
-KELLER Morgane__
-MAUCHE Gauthier__
-PHOTHINANTHA Henri__
-WADOUX Nicolas__
+DAVID Emma<br\>
+KELLER Morgane<br\>
+MAUCHE Gauthier<br\>
+PHOTHINANTHA Henri<br\>
+WADOUX Nicolas<br\>
