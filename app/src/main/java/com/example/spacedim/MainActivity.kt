@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
-import timber.log.Timber
+import com.example.spacedim.Interface.LifeCycleLogs
 
 class MainActivity : AppCompatActivity(), LifeCycleLogs {
     override fun onCreate(savedInstanceState: Bundle?) {

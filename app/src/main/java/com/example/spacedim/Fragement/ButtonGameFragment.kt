@@ -1,4 +1,4 @@
-package com.example.spacedim
+package com.example.spacedim.Fragement
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,19 +6,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.navigation.findNavController
-import com.example.spacedim.databinding.FragmentWaintingBinding
+import com.example.spacedim.Interface.LifeCycleLogs
+import com.example.spacedim.R
+import com.example.spacedim.databinding.FragmentButtonGameBinding
 
-class WaintingFragment : Fragment(), LifeCycleLogs {
+class ButtonGameFragment : Fragment(), LifeCycleLogs {
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        val binding = DataBindingUtil.inflate<FragmentWaintingBinding>(inflater, R.layout.fragment_wainting, container, false)
-        binding.playButton.setOnClickListener { view : View ->
-            view.findNavController().navigate(R.id.action_waintingFragment_to_gameFragment)
-        }
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
+                              savedInstanceState: Bundle?): View? {
+        val binding = DataBindingUtil.inflate<FragmentButtonGameBinding>(inflater,
+            R.layout.fragment_button_game, container, false)
         return binding.root
     }
 

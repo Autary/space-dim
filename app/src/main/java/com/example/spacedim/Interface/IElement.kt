@@ -1,4 +1,4 @@
-package com.example.spacedim
+package com.example.spacedim.Interface
 
 interface IElement {
     var id: Int

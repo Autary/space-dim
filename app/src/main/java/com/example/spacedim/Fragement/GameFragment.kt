@@ -1,4 +1,4 @@
-package com.example.spacedim
+package com.example.spacedim.Fragement
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,18 +7,26 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
-import com.example.spacedim.databinding.FragmentWinBinding
+import com.example.spacedim.Interface.LifeCycleLogs
+import com.example.spacedim.R
+import com.example.spacedim.databinding.FragmentGameBinding
 
-class WinFragment : Fragment(), LifeCycleLogs {
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        val binding = DataBindingUtil.inflate<FragmentWinBinding>(inflater, R.layout.fragment_win, container, false)
-        binding.retryBtn.setOnClickListener { view : View ->
-            view.findNavController().navigate(R.id.action_winFragment_to_waintingFragment)
+class GameFragment : Fragment(), LifeCycleLogs {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val binding = DataBindingUtil.inflate<FragmentGameBinding>(inflater,
+            R.layout.fragment_game, container, false)
+        binding.fakeLooseBtn.setOnClickListener { view : View ->
+            view.findNavController().navigate(R.id.action_gameFragment_to_looseFragment)
+        }
+        binding.fakeWinBtn.setOnClickListener { view : View ->
+            view.findNavController().navigate(R.id.action_gameFragment_to_winFragment)
         }
         return binding.root
     }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super<Fragment>.onCreate(savedInstanceState)
@@ -49,5 +57,4 @@ class WinFragment : Fragment(), LifeCycleLogs {
         super<Fragment>.onDestroy()
         super<LifeCycleLogs>.onDestroy()
     }
-
 }

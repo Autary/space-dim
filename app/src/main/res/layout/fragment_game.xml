@@ -2,7 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".GameFragment">
+    tools:context=".Fragement.GameFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/gameMainConstraint"
@@ -74,13 +74,13 @@
 
                 <fragment
                     android:id="@+id/fakeButton1"
-                    android:name="com.example.spacedim.switchGameButton"
+                    android:name="com.example.spacedim.Fragement.switchGameButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
                 <fragment
                     android:id="@+id/fakebutton2"
-                    android:name="com.example.spacedim.ButtonGameFragment"
+                    android:name="com.example.spacedim.Fragement.ButtonGameFragment"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
@@ -92,7 +92,7 @@
 
                 <fragment
                     android:id="@+id/fakebutton3"
-                    android:name="com.example.spacedim.switchGameButton"
+                    android:name="com.example.spacedim.Fragement.switchGameButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </TableRow>
