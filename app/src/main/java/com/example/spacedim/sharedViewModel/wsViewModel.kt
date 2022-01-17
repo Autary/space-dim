@@ -1,20 +1,19 @@
 package com.example.spacedim.sharedViewModel
 
-import android.os.Bundle
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import okhttp3.*
 import okio.ByteString
 
 class wsViewModel : ViewModel() {
-    val client = OkHttpClient();
-    private lateinit var ws: WebSocket;
+    private val client = OkHttpClient();
+    lateinit var ws: WebSocket;
     private lateinit var listener: EchoWebSocketListener;
     private lateinit var request: Request;
 
-    fun createWS() {
+    fun createWS(roomName:String, idUser:Int) {
         request = Request.Builder()
-                .url("ws://spacedim.async-agency.com:8081/ws/")
+                .url("ws://spacedim.async-agency.com:8081/ws/join/"+roomName+"/"+idUser)
                 .build()
         listener = EchoWebSocketListener();
         ws = client.newWebSocket(request, listener)

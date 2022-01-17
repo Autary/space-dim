@@ -24,6 +24,12 @@ class HttpViewModel : ViewModel() {
     private val _user = MutableLiveData<User>()
     val user: LiveData<User> = _user
 
+    private val _eventGoToCreateRoom = MutableLiveData<Boolean>()
+    val eventGoToCreateRoom: LiveData<Boolean>
+        get() = _eventGoToCreateRoom
+
+
+
     // The internal MutableLiveData String that stores the most recent response
     private val _response = MutableLiveData<String>()
 
@@ -90,6 +96,7 @@ class HttpViewModel : ViewModel() {
             object : Callback<String> {
                 override fun onResponse(call: Call<String>, response: Response<String>) {
                     _user.value = adapter.fromJson(response.body())
+                    _eventGoToCreateRoom.value = true
                 }
 
                 override fun onFailure(call: Call<String>, t: Throwable) {
@@ -114,6 +121,7 @@ class HttpViewModel : ViewModel() {
                         getPlayerByname(userCreate.name)
                     } else {
                         _user.value = adapter.fromJson(response.body())
+                        _eventGoToCreateRoom.value = true
                     }
                 }
 

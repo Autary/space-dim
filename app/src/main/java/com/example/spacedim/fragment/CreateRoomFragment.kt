@@ -13,9 +13,11 @@ import com.example.retrofit.overview.HttpViewModel
 import com.example.spacedim.interfaces.LifeCycleLogs
 import com.example.spacedim.R
 import com.example.spacedim.databinding.FragmentCreateRoomBinding
+import com.example.spacedim.sharedViewModel.wsViewModel
 
 class CreateRoomFragment : Fragment(), LifeCycleLogs {
     private val viewModel: HttpViewModel by activityViewModels()
+    private val wsviewModel: wsViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -23,9 +25,13 @@ class CreateRoomFragment : Fragment(), LifeCycleLogs {
     ): View? {
         val binding = DataBindingUtil.inflate<FragmentCreateRoomBinding>(inflater,
             R.layout.fragment_create_room, container, false)
+
         binding.joinRoom.setOnClickListener { view : View ->
-            viewModel.user.value?.let { Log.i("User name: ", it.name) }
-            view.findNavController().navigate(R.id.action_createRoomFragment_to_waintingFragment)
+            viewModel.user.value?.let {  wsviewModel.createWS("Henri", it.id) }
+
+            Log.i("TESTEEEEE","ws://spacedim.async-agency.com:8081/ws/join/Henri/"+viewModel.user.value?.let { it.id })
+
+            //view.findNavController().navigate(R.id.action_createRoomFragment_to_waintingFragment)
         }
         return binding.root
     }
