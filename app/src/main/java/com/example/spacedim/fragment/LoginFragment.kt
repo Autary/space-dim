@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
-import com.example.retrofit.overview.OverviewViewModel
+import com.example.retrofit.overview.HttpViewModel
 import com.example.spacedim.interfaces.LifeCycleLogs
 import com.example.spacedim.R
 import com.example.spacedim.databinding.FragmentLoginBinding
@@ -16,7 +16,7 @@ import com.example.spacedim.databinding.FragmentLoginBinding
 
 class LoginFragment : Fragment(), LifeCycleLogs {
 
-    private val viewModel: OverviewViewModel by activityViewModels()
+    private val viewModel: HttpViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

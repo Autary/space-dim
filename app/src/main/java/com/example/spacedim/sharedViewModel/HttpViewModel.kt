@@ -14,10 +14,7 @@ import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Call
 import retrofit2.Response
 
-/**
- * The [ViewModel] that is attached to the [OverviewFragment].
- */
-class OverviewViewModel : ViewModel() {
+class HttpViewModel : ViewModel() {
 
     val moshi: Moshi = Moshi.Builder()
         .addLast(KotlinJsonAdapterFactory())
