@@ -1,4 +1,4 @@
-package com.example.spacedim.Fragement
+package com.example.spacedim.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,21 +6,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import com.example.spacedim.Interface.LifeCycleLogs
+import com.example.spacedim.`interface`.LifeCycleLogs
 import com.example.spacedim.R
-import com.example.spacedim.databinding.FragmentSwitchGameButtonBinding
+import com.example.spacedim.databinding.FragmentPlayerCardBinding
 
-class switchGameButton : Fragment(), LifeCycleLogs {
+class PlayerCardFragment : Fragment(), LifeCycleLogs {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = DataBindingUtil.inflate<FragmentSwitchGameButtonBinding>(inflater,
-            R.layout.fragment_switch_game_button, container, false)
+        val binding = DataBindingUtil.inflate<FragmentPlayerCardBinding>(inflater,
+            R.layout.fragment_player_card, container, false)
         return binding.root
     }
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super<Fragment>.onCreate(savedInstanceState)
@@ -51,5 +50,4 @@ class switchGameButton : Fragment(), LifeCycleLogs {
         super<Fragment>.onDestroy()
         super<LifeCycleLogs>.onDestroy()
     }
-
 }

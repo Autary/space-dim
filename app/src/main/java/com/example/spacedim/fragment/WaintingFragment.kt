@@ -1,47 +1,29 @@
-package com.example.spacedim.Fragement
+package com.example.spacedim.fragment
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
-import com.example.retrofit.overview.OverviewViewModel
-import com.example.spacedim.Interface.LifeCycleLogs
+import com.example.spacedim.`interface`.LifeCycleLogs
 import com.example.spacedim.R
-import com.example.spacedim.databinding.FragmentLoginBinding
+import com.example.spacedim.databinding.FragmentWaintingBinding
 
-
-class LoginFragment : Fragment(), LifeCycleLogs {
-
-    private val viewModel: OverviewViewModel by lazy {
-        ViewModelProvider(this).get(OverviewViewModel::class.java)
-    }
-
+class WaintingFragment : Fragment(), LifeCycleLogs {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = DataBindingUtil.inflate<FragmentLoginBinding>(inflater,
-            R.layout.fragment_login, container, false)
-        binding.launchButton.setOnClickListener { view : View ->
-
-
-            if (!binding.nameInput.text.isNullOrBlank()) {
-                viewModel.addUser(binding.nameInput.text.toString())
-                Log.i("TESTEEEE", binding.nameInput.text.toString())
-                view.findNavController().navigate(R.id.action_loginFragment_to_createRoomFragment)
-            }
+        val binding = DataBindingUtil.inflate<FragmentWaintingBinding>(inflater,
+            R.layout.fragment_wainting, container, false)
+        binding.playButton.setOnClickListener { view : View ->
+            view.findNavController().navigate(R.id.action_waintingFragment_to_gameFragment)
         }
-
-
         return binding.root
     }
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super<Fragment>.onCreate(savedInstanceState)

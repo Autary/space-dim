@@ -1,6 +1,6 @@
 package com.example.spacedim
 
-import com.example.spacedim.Class.UIElement
+import com.example.spacedim.`class`.UIElement
 import com.example.spacedim.game.Action
 
 enum class EventType() {

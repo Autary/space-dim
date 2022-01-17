@@ -1,4 +1,4 @@
-package com.example.spacedim.Interface
+package com.example.spacedim.`interface`
 
 import android.util.Log
 
