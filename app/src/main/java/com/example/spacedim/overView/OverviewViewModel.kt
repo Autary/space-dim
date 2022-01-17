@@ -24,6 +24,8 @@ class OverviewViewModel : ViewModel() {
         .build()
     val adapter: JsonAdapter<User> = moshi.adapter(User::class.java)
 
+    private val _user = MutableLiveData<User>()
+    val user: LiveData<User> = _user
 
     // The internal MutableLiveData String that stores the most recent response
     private val _response = MutableLiveData<String>()
@@ -80,7 +82,7 @@ class OverviewViewModel : ViewModel() {
                 }
 
                 override fun onFailure(call: Call<String>, t: Throwable) {
-                    Log.i("TESTTTTTT", "Fail")
+                    Log.i(this.javaClass.name, "Fail get user")
                 }
             })
     }
@@ -90,11 +92,11 @@ class OverviewViewModel : ViewModel() {
         SpaceDimApi.retrofitService.getPlayerByname(name).enqueue(
             object : Callback<String> {
                 override fun onResponse(call: Call<String>, response: Response<String>) {
-                    val user = adapter.fromJson(response.body())
+                    _user.value = adapter.fromJson(response.body())
                 }
 
                 override fun onFailure(call: Call<String>, t: Throwable) {
-                    Log.i("TESTTTTTT", "Fail")
+                    Log.i(this.javaClass.name, "Fail get user by name")
                 }
             })
     }
@@ -102,12 +104,9 @@ class OverviewViewModel : ViewModel() {
     //Exécute la fonction afin d'appeler la requête pour inserer un utilisateur
     fun addUser(name: String) {
 
-        var user = UserCreate(name)
-        val moshi: Moshi = Moshi.Builder()
-            .addLast(KotlinJsonAdapterFactory())
-            .build()
-        val adapter: JsonAdapter<UserCreate> = moshi.adapter(UserCreate::class.java)
-        val data = adapter.toJson(user)
+        var userCreate = UserCreate(name)
+        val createAdapter: JsonAdapter<UserCreate> = moshi.adapter(UserCreate::class.java)
+        val data = createAdapter.toJson(userCreate)
 
 
         SpaceDimApi.retrofitService.addUser(data).enqueue(
@@ -115,14 +114,14 @@ class OverviewViewModel : ViewModel() {
                 override fun onResponse(call: Call<String>, response: Response<String>) {
 
                     if (response.body() == null) {
-                        getPlayerByname(user.name)
+                        getPlayerByname(userCreate.name)
                     } else {
-                        val user = adapter.fromJson(response.body())
+                        _user.value = adapter.fromJson(response.body())
                     }
                 }
 
                 override fun onFailure(call: Call<String>, t: Throwable) {
-                    Log.i("TESTTTTTT", "fail")
+                    Log.i(this.javaClass.name, " Fail :" + t.message)
                 }
             }
         )
