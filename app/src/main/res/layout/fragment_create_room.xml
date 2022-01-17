@@ -23,7 +23,7 @@
 
         <fragment
             android:id="@+id/fragment"
-            android:name="com.example.spacedim.Fragement.SocketFragment"
+            android:name="com.example.spacedim.fragment.SocketFragment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"

@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.example.spacedim.Fragement.LoginFragment"
+        android:name="com.example.spacedim.fragment.LoginFragment"
         android:label="@string/login"
         tools:layout="@layout/fragment_login" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/createRoomFragment"
-        android:name="com.example.spacedim.Fragement.CreateRoomFragment"
+        android:name="com.example.spacedim.fragment.CreateRoomFragment"
         android:label="@string/waiting_room"
         tools:layout="@layout/fragment_create_room" >
         <action
@@ -25,7 +25,7 @@
     </fragment>
     <fragment
         android:id="@+id/waintingFragment"
-        android:name="com.example.spacedim.Fragement.WaintingFragment"
+        android:name="com.example.spacedim.fragment.WaintingFragment"
         android:label="@string/waiting_room"
         tools:layout="@layout/fragment_wainting" >
         <action
@@ -34,7 +34,7 @@
     </fragment>
     <fragment
         android:id="@+id/gameFragment"
-        android:name="com.example.spacedim.Fragement.GameFragment"
+        android:name="com.example.spacedim.fragment.GameFragment"
         android:label="@string/app_name"
         tools:layout="@layout/fragment_game" >
         <action
@@ -48,7 +48,7 @@
     </fragment>
     <fragment
         android:id="@+id/looseFragment"
-        android:name="com.example.spacedim.Fragement.LooseFragment"
+        android:name="com.example.spacedim.fragment.LooseFragment"
         android:label="@string/game_loose"
         tools:layout="@layout/fragment_loose" >
         <action
@@ -57,7 +57,7 @@
     </fragment>
     <fragment
         android:id="@+id/winFragment"
-        android:name="com.example.spacedim.Fragement.WinFragment"
+        android:name="com.example.spacedim.fragment.WinFragment"
         android:label="@string/game_win"
         tools:layout="@layout/fragment_win" >
         <action

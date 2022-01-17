@@ -1,13 +1,8 @@
 package com.example.spacedim.viewModel
 
-import android.R.attr
 import android.util.Log
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.ViewModel
-import com.example.spacedim.*
-import com.example.spacedim.Class.UIElement
+import com.example.spacedim.`class`.UIElement
 import com.example.spacedim.game.Action
 
 class GameViewModel : ViewModel() {
@@ -62,18 +57,8 @@ class GameViewModel : ViewModel() {
 
     }
 
-
-
     override fun onCleared() {
         super.onCleared()
         Log.i("GameViewModel", "GameViewModel destroyed!")
-    }
-
-    fun addFragmentToFragment(manager: FragmentManager, fragment: Fragment?, frameId: Int) {
-        val transaction: FragmentTransaction = manager.beginTransaction()
-        if (fragment != null) {
-            transaction.add(frameId, fragment)
-        }
-        transaction.commit()
     }
 }

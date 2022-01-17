@@ -1,4 +1,4 @@
-package com.example.spacedim.Fragement
+package com.example.spacedim.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,9 +9,9 @@ import android.widget.Button
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
-import com.example.spacedim.Class.UIElement
-import com.example.spacedim.Class.UIType
-import com.example.spacedim.Interface.LifeCycleLogs
+import com.example.spacedim.`class`.UIElement
+import com.example.spacedim.`class`.UIType
+import com.example.spacedim.`interface`.LifeCycleLogs
 import com.example.spacedim.R
 import com.example.spacedim.databinding.FragmentGameBinding
 import com.example.spacedim.viewModel.GameViewModel
@@ -61,7 +61,7 @@ class GameFragment : Fragment(), LifeCycleLogs {
             }
 
             if(it.type == UIType.SWITCH){
-                switchGameButton()
+                //switchGameButton()
             }
 
         }
