@@ -1,17 +1,17 @@
 package com.example.spacedim.fragment
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
-import com.example.spacedim.`class`.UIElement
-import com.example.spacedim.`class`.UIType
-import com.example.spacedim.`interface`.LifeCycleLogs
+import com.example.spacedim.classes.UIElement
+import com.example.spacedim.classes.UIType
+import com.example.spacedim.interfaces.LifeCycleLogs
 import com.example.spacedim.R
 import com.example.spacedim.databinding.FragmentGameBinding
 import com.example.spacedim.viewModel.GameViewModel

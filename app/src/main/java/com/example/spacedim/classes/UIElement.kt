@@ -1,6 +1,6 @@
-package com.example.spacedim.`class`
+package com.example.spacedim.classes
 
-import com.example.spacedim.`interface`.IElement
+import com.example.spacedim.interfaces.IElement
 
 sealed class UIElement(val type: UIType) : IElement {
     data class Button(override var id: Int, override val content: String) : UIElement(UIType.BUTTON)

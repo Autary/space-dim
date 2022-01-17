@@ -1,26 +1,22 @@
 package com.example.spacedim.fragment
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
-import com.example.retrofit.overview.OverviewViewModel
-import com.example.spacedim.`interface`.LifeCycleLogs
+import com.example.retrofit.overview.HttpViewModel
+import com.example.spacedim.interfaces.LifeCycleLogs
 import com.example.spacedim.R
 import com.example.spacedim.databinding.FragmentLoginBinding
 
 
 class LoginFragment : Fragment(), LifeCycleLogs {
 
-    private val viewModel: OverviewViewModel by lazy {
-        ViewModelProvider(this).get(OverviewViewModel::class.java)
-    }
-
+    private val viewModel: HttpViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,7 +29,6 @@ class LoginFragment : Fragment(), LifeCycleLogs {
 
             if (!binding.nameInput.text.isNullOrBlank()) {
                 viewModel.addUser(binding.nameInput.text.toString())
-                Log.i("TESTEEEE", binding.nameInput.text.toString())
                 view.findNavController().navigate(R.id.action_loginFragment_to_createRoomFragment)
             }
         }
