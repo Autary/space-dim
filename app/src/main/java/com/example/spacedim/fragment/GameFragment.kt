@@ -96,20 +96,24 @@ class GameFragment : Fragment(), LifeCycleLogs {
             UIType.SHAKE -> {
                 Sensey.getInstance().init(context);
                 val shakeListener: ShakeListener = object : ShakeListener {
+
                     override fun onShakeDetected() {
-                        Log.i("GameFragmentAction", "shake shake")
+                        // envoi SHAKE au server
+
                     }
 
                     override fun onShakeStopped() {
-                        Log.i("GameFragmentAction", "stop shake")
+
                     }
                 }
-                //Sensey.getInstance().startShakeDetection(shakeListener);
-                Sensey.getInstance().startShakeDetection(10f,1000,shakeListener);
+
+                Sensey.getInstance().startShakeDetection(4f,3000,shakeListener);
+
+                // si Action OK
                 //Sensey.getInstance().stopShakeDetection(shakeListener);
             }
             else -> {
-                Log.i("GameFragmentAction", action.uiElement.uiType.toString())
+                // si le serveur à reçu l'action dans les temps
             }
         }
     }
