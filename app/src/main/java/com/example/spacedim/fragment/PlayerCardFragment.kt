@@ -16,8 +16,7 @@ class PlayerCardFragment : Fragment(), LifeCycleLogs {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = DataBindingUtil.inflate<FragmentPlayerCardBinding>(inflater,
-            R.layout.fragment_player_card, container, false)
+        val binding = FragmentPlayerCardBinding.inflate(inflater)
         return binding.root
     }
 

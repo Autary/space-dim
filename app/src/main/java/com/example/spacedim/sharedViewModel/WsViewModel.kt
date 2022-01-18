@@ -53,7 +53,9 @@ class WsViewModel : ViewModel() {
                 val response = PolymoViewModel.adapterSpace.fromJson(str)?.let { Log.i(this.javaClass.name," response.toString()") }
                 //Log.i(this.javaClass.name, response.toString())
             }catch (exeption: Exception){
-                //Log.i(this.javaClass.name, exeption.toString())
+                Log.i(this.javaClass.name, exeption.toString())
+            }catch (exception: Throwable){
+                Log.e(this.javaClass.name, exception.toString())
             }
 
 

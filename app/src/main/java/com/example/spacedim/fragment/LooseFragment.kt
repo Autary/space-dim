@@ -15,8 +15,7 @@ class LooseFragment : Fragment(), LifeCycleLogs {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        val binding = DataBindingUtil.inflate<FragmentLooseBinding>(inflater,
-            R.layout.fragment_loose, container, false)
+        val binding = FragmentLooseBinding.inflate(inflater)
         binding.retryBtn.setOnClickListener { view : View ->
             view.findNavController().navigate(R.id.action_looseFragment_to_waitingFragment)
         }

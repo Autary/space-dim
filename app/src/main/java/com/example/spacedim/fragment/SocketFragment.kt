@@ -16,8 +16,7 @@ class SocketFragment : Fragment(), LifeCycleLogs {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = DataBindingUtil.inflate<FragmentSocketBinding>(inflater,
-            R.layout.fragment_socket, container, false)
+        val binding = FragmentSocketBinding.inflate(inflater)
         return binding.root
     }
 

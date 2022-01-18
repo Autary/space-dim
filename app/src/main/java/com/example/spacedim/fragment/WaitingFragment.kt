@@ -23,8 +23,7 @@ class WaitingFragment : Fragment(), LifeCycleLogs {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = DataBindingUtil.inflate<FragmentWaitingBinding>(inflater,
-            R.layout.fragment_waiting, container, false)
+        val binding = FragmentWaitingBinding.inflate(inflater)
 
         binding.playButton.setOnClickListener { view : View ->
             Log.i("TESTEEEEE","{\"type\":\"READY\", \"value\":true}")

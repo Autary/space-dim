@@ -25,8 +25,7 @@ class CreateRoomFragment : Fragment(), LifeCycleLogs {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = DataBindingUtil.inflate<FragmentCreateRoomBinding>(inflater,
-            R.layout.fragment_create_room, container, false)
+        val binding = FragmentCreateRoomBinding.inflate(inflater)
 
         binding.joinRoom.setOnClickListener { view : View ->
             viewModel.user.value?.let {  wsviewModel.createWS("Henri", it.id) }
