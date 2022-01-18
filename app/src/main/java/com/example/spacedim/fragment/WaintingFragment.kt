@@ -9,9 +9,13 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
 import com.example.retrofit.overview.HttpViewModel
+import com.example.spacedim.Event
 import com.example.spacedim.interfaces.LifeCycleLogs
 import com.example.spacedim.R
 import com.example.spacedim.databinding.FragmentWaintingBinding
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.adapters.PolymorphicJsonAdapterFactory
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 
 class WaintingFragment : Fragment(), LifeCycleLogs {
     private val viewModel: HttpViewModel by activityViewModels()
@@ -25,6 +29,8 @@ class WaintingFragment : Fragment(), LifeCycleLogs {
             Log.i("TESTEEEEE","{\"type\":\"READY\", \"value\":true}")
             //view.findNavController().navigate(R.id.action_waintingFragment_to_gameFragment)
         }
+
+
         return binding.root
     }
 
