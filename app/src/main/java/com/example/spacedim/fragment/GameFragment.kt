@@ -60,6 +60,8 @@ class GameFragment : Fragment(), LifeCycleLogs {
             setBtn(msg.uiElementList , binding)
         })
         wsViewModel.listener.eventNextLevel.observe(viewLifecycleOwner, Observer { msg ->
+            var grid : GridLayout = binding.gridView
+            grid.removeAllViews()
             setBtn(msg.uiElementList , binding)
         })
         wsViewModel.listener.eventNextAction.observe(viewLifecycleOwner, Observer { msg ->
@@ -90,6 +92,7 @@ class GameFragment : Fragment(), LifeCycleLogs {
 
             var grid : GridLayout = binding.gridView
 
+
             when (it.uiType){
                 UIType.BUTTON -> {
                     val viewButton = layoutInflater.inflate(R.layout.button_game, grid, false)
@@ -97,6 +100,7 @@ class GameFragment : Fragment(), LifeCycleLogs {
                     btn.setText(it.content)
                     btn.setOnClickListener{  view : View ->
                         wsViewModel.ws.send(PolymoObject.adapterSpace.toJson(Event.PlayerAction(it)))
+                        Log.i("TESTEEEEE",PolymoObject.adapterSpace.toJson(Event.PlayerAction(it)))
                     }
                     grid.addView(viewButton)
                 }
@@ -123,6 +127,7 @@ class GameFragment : Fragment(), LifeCycleLogs {
 
                     override fun onShakeDetected() {
                         // envoi SHAKE au server
+                        wsViewModel.ws.send(PolymoObject.adapterSpace.toJson(Event.PlayerAction(action.uiElement)))
 
                     }
 
