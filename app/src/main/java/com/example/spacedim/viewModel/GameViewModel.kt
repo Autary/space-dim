@@ -21,10 +21,10 @@ class GameViewModel : ViewModel() {
     private lateinit var elementsList: List<UIElement>
 
 
-    private fun getAction() : Action{
+   /* private fun getAction() : Action{
         action = Action("Shake your phone ",UIElement(3, UIType.SHAKE,"") )
         return action
-    }
+    }*/
 
     // list of UIElements given by the server
   /*  private fun getUIElements(): List<UIElement> {
@@ -38,23 +38,23 @@ class GameViewModel : ViewModel() {
         return elementsList
     }*/
 
-    private fun updateTimer() : Int{
-        var time = 5000
+/* private fun updateTimer() : Int{
+     var time = 5000
 
-        return time
-    }
+     return time
+ }*/
 
-    init {
-      //  uiElements.value = getUIElements()
-        timer.value = updateTimer()
-        currentAction.value = getAction()
+ init {
+   //  uiElements.value = getUIElements()
+     ///timer.value = updateTimer()
+     //currentAction.value = getAction()
 
-        Log.i("GameViewModel", "GameViewModel created!")
+     Log.i("GameViewModel", "GameViewModel created!")
 
-    }
+ }
 
-    override fun onCleared() {
-        super.onCleared()
-        Log.i("GameViewModel", "GameViewModel destroyed!")
-    }
+ override fun onCleared() {
+     super.onCleared()
+     Log.i("GameViewModel", "GameViewModel destroyed!")
+ }
 }

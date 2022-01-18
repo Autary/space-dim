@@ -58,6 +58,10 @@ class GameFragment : Fragment(), LifeCycleLogs {
         wsViewModel.listener.eventGameStarted.observe(viewLifecycleOwner, Observer { msg ->
             setBtn(msg.uiElementList , binding)
         })
+        wsViewModel.listener.eventNextAction.observe(viewLifecycleOwner, Observer { msg ->
+            setAction(msg.action , binding)
+            gameTimer(msg.action.time.toInt(),binding)
+        })
 
 
         binding.fakeLooseBtn.setOnClickListener { view : View ->

@@ -42,7 +42,7 @@ class WaitingFragment : Fragment(), LifeCycleLogs {
             val redy = PolymoObject.adapterSpace.toJson(Event.Ready(true))
             wsViewModel.ws.send(redy)
 
-            view.findNavController().navigate(R.id.action_waitingFragment_to_gameFragment)
+           // view.findNavController().navigate(R.id.action_waitingFragment_to_gameFragment)
         }
         wsViewModel.listener.eventGoToPlay.observe(viewLifecycleOwner, Observer { play ->
             if(play){
