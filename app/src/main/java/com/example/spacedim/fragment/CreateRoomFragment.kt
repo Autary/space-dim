@@ -33,7 +33,7 @@ class CreateRoomFragment : Fragment(), LifeCycleLogs {
 
             Log.i("TESTEEEEE","ws://spacedim.async-agency.com:8081/ws/join/Henri/"+viewModel.user.value?.let { it.id })
 
-            //view.findNavController().navigate(R.id.action_createRoomFragment_to_waitingFragment)
+            view.findNavController().navigate(R.id.action_createRoomFragment_to_waitingFragment)
         }
         wsviewModel.eventMessage.observe(viewLifecycleOwner, Observer { msg ->
            Log.i("tydshgfjhdf", msg.toString())
