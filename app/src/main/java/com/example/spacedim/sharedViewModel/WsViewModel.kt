@@ -14,11 +14,13 @@ class WsViewModel : ViewModel() {
     lateinit var ws: WebSocket;
     lateinit var listener: EchoWebSocketListener;
     private lateinit var request: Request;
+    var room = "";
 
     fun createWS(roomName: String, idUser: Int) {
         request = Request.Builder()
             .url("ws://spacedim.async-agency.com:8081/ws/join/" + roomName + "/" + idUser)
             .build()
+        room = roomName
         listener = EchoWebSocketListener()
         ws = client.newWebSocket(request, listener)
     }
@@ -26,12 +28,17 @@ class WsViewModel : ViewModel() {
 
 class EchoWebSocketListener() : WebSocketListener() {
 
+    private val _state = MutableLiveData<Boolean>()
+    val state: LiveData<Boolean>
+        get() = _state
+
     private val _eventMessage = MutableLiveData<Event>()
     val eventMessage: LiveData<Event>
         get() = _eventMessage
 
     override fun onOpen(webSocket: WebSocket, response: Response?) {
        // Log.i(this.javaClass.name, "open")
+        _state.postValue(true);
     }
 
     override fun onMessage(webSocket: WebSocket?, bytes: ByteString) {
@@ -58,6 +65,7 @@ class EchoWebSocketListener() : WebSocketListener() {
     override fun onClosing(webSocket: WebSocket, code: Int, reason: String) {
         webSocket.close(NORMAL_CLOSURE_STATUS, null)
         //Log.i(this.javaClass.name, "Closing : $code / $reason")
+        _state.postValue(false);
     }
 
     override fun onFailure(webSocket: WebSocket?, t: Throwable, response: Response?) {
