@@ -15,6 +15,7 @@ class GameViewModel : ViewModel() {
     var score = 0
 
     var uiElements = MutableLiveData<List<UIElement>>()
+    var timer = MutableLiveData<Int>()
 
     private lateinit var actionList: MutableList<Action>
     private lateinit var elementsList: List<UIElement>
@@ -31,8 +32,16 @@ class GameViewModel : ViewModel() {
         return elementsList
     }
 
+    private fun updateTimer() : Int{
+        var time = 5000
+
+        return time
+    }
+
     init {
         uiElements.value = getUIElements()
+        timer.value = updateTimer()
+
         Log.i("GameViewModel", "GameViewModel created!")
 
     }
