@@ -44,6 +44,11 @@ class WaitingFragment : Fragment(), LifeCycleLogs {
 
             view.findNavController().navigate(R.id.action_waitingFragment_to_gameFragment)
         }
+        wsViewModel.listener.eventGoToPlay.observe(viewLifecycleOwner, Observer { play ->
+            if(play){
+                view?.findNavController()?.navigate(R.id.action_waitingFragment_to_gameFragment)
+            }
+        })
         wsViewModel.listener.eventMessage.observe(viewLifecycleOwner, Observer { msg ->
 
             if(msg is Event.WaitingForPlayer){

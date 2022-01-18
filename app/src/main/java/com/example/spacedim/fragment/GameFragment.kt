@@ -26,11 +26,14 @@ import com.example.spacedim.game.Action
 import com.github.nisrulz.sensey.Sensey
 import com.github.nisrulz.sensey.ShakeDetector
 import com.github.nisrulz.sensey.ShakeDetector.ShakeListener
+import androidx.fragment.app.activityViewModels
+import com.example.spacedim.classes.Event
+import com.example.spacedim.sharedViewModel.WsViewModel
 
 
 class GameFragment : Fragment(), LifeCycleLogs {
     private lateinit var viewModel: GameViewModel
-
+    private val wsViewModel: WsViewModel by activityViewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -51,6 +54,11 @@ class GameFragment : Fragment(), LifeCycleLogs {
         viewModel.currentAction.observe(viewLifecycleOwner, Observer { newAction ->
             viewModel.currentAction.value?.let { setAction(it,binding) }
         })
+
+        wsViewModel.listener.eventGameStarted.observe(viewLifecycleOwner, Observer { msg ->
+            setBtn(msg.uiElementList , binding)
+        })
+
 
         binding.fakeLooseBtn.setOnClickListener { view : View ->
             view.findNavController().navigate(R.id.action_gameFragment_to_looseFragment)

@@ -27,7 +27,7 @@ class GameViewModel : ViewModel() {
     }
 
     // list of UIElements given by the server
-    private fun getUIElements(): List<UIElement> {
+  /*  private fun getUIElements(): List<UIElement> {
         elementsList = listOf(
             UIElement(3, UIType.BUTTON,"booster"),
             UIElement(5, UIType.SWITCH,"filter"),
@@ -36,7 +36,7 @@ class GameViewModel : ViewModel() {
             UIElement(6, UIType.BUTTON,"eggs"),
         )
         return elementsList
-    }
+    }*/
 
     private fun updateTimer() : Int{
         var time = 5000
@@ -45,7 +45,7 @@ class GameViewModel : ViewModel() {
     }
 
     init {
-        uiElements.value = getUIElements()
+      //  uiElements.value = getUIElements()
         timer.value = updateTimer()
         currentAction.value = getAction()
 
