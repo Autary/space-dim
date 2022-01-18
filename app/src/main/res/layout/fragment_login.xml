@@ -8,91 +8,111 @@
         android:id="@+id/mainPage"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/space"
+        android:background="@drawable/bg_login"
         android:tag="layout/fragment_login">
 
-        <TextView
-            android:id="@+id/appNameTilte"
-            style="@style/activity_title"
-            android:layout_marginBottom="16dp"
-            android:text="@string/app_name"
-            app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/nameInputLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="42dp"
+            android:layout_marginEnd="42dp"
+            android:background="@drawable/rounded"
+            android:hint="@string/name"
+            android:textColorHint="#CB9CCC"
+            app:layout_constraintBottom_toTopOf="@+id/launchButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/logo"
+            app:startIconDrawable="@drawable/ic_person"
+            app:startIconTint="#CB9CCC">
+
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/nameInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded"
+                android:textColor="#CB9CCC"
+                tools:ignore="TextContrastCheck" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/launchButton"
+            android:layout_width="190dp"
+            android:layout_height="85dp"
+            android:layout_marginBottom="35dp"
+            android:background="@drawable/custom_button_purple"
+            android:text="@string/launch"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            app:backgroundTint="@null"
+            app:layout_constraintBottom_toTopOf="@+id/registerButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="TextContrastCheck,DuplicateSpeakableTextCheck" />
+
+        <Button
+            android:id="@+id/registerButton"
+            android:layout_width="190dp"
+            android:layout_height="85dp"
+            android:layout_marginBottom="40dp"
+            android:background="@drawable/custom_button_brown"
+            android:text="@string/register"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            app:backgroundTint="@null"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="TextContrastCheck" />
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="330dp"
+            android:layout_height="330dp"
+            android:contentDescription="@string/logo"
+            android:src="@drawable/logo_login"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout"
-            android:layout_width="300dp"
-            android:layout_height="150dp"
-            android:background="@drawable/rounded"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <ImageView
-                android:id="@+id/astronaut_avatar"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_marginEnd="16dp"
-                android:layout_weight="1"
-                android:contentDescription="@string/content_avatar_icon"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/avatar" />
-
-            <TextView
-                android:id="@+id/fake_id"
-                android:layout_width="126dp"
-                android:layout_height="15dp"
-                android:layout_marginTop="4dp"
-                android:text="@string/fake_id"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <EditText
-                android:id="@+id/nameInput"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:ems="10"
-                android:hint="@string/Your_Name"
-                android:importantForAutofill="no"
-                android:inputType="textPersonName"
-                app:layout_constraintEnd_toStartOf="@+id/astronaut_avatar"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/astronaut_avatar" />
-
-            <ImageView
-                android:id="@+id/nasaIcon"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:contentDescription="@string/content_nasa_icon"
-                app:layout_constraintBottom_toBottomOf="@+id/astronaut_avatar"
-                app:layout_constraintEnd_toStartOf="@+id/astronaut_avatar"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/nameInput"
-                app:layout_constraintVertical_bias="0.562"
-                app:srcCompat="@drawable/nasa" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <Button
-            android:id="@+id/launchButton"
+        <TextView
+            android:id="@+id/unicornText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/launch"
-            app:layout_constraintEnd_toEndOf="@+id/constraintLayout"
-            app:layout_constraintStart_toStartOf="@+id/constraintLayout"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+            android:layout_marginStart="1dp"
+            android:layout_marginBottom="3dp"
+            android:shadowColor="#BDBDBD"
+            android:shadowDx="5"
+            android:shadowDy="5"
+            android:shadowRadius="5"
+            android:text="@string/unicorn"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/nameInputLayout"
+            app:layout_constraintStart_toStartOf="@+id/nameInputLayout"
+            tools:ignore="TextContrastCheck" />
+
+        <TextView
+            android:id="@+id/emmaChefLandText"
+            android:layout_width="198dp"
+            android:layout_height="18dp"
+            android:layout_marginBottom="5dp"
+            android:shadowColor="#BFBFBF"
+            android:shadowDx="3"
+            android:shadowDy="3"
+            android:shadowRadius="3"
+            android:text="@string/emmachefland"
+            android:textAlignment="center"
+            android:textColor="#F3F1F1"
+            android:textStyle="bold|italic"
+            app:layout_constraintBottom_toTopOf="@+id/registerButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="TextContrastCheck" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

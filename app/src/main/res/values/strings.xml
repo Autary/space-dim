@@ -2,10 +2,11 @@
     <string name="app_name">Space DIM</string>
     <string name="login">Login to play astronaut</string>
     <string name="fake_id">astronaut n°FR8742</string>
-    <string name="Your_Name">Your Name</string>
+    <string name="name">Name</string>
     <string name="content_nasa_icon">nasa red icon</string>
     <string name="content_avatar_icon">Astronaut avatar icon</string>
     <string name="launch">Launch</string>
+    <string name="register">Register</string>
     <string name="waiting_room">Waiting room</string>
     <string name="join_a_room">Enter a room name or create a game</string>
     <string name="inactive_socket">Socket inactive</string>
@@ -25,4 +26,7 @@
     <string name="mission_failed">Mission failed</string>
     <string name="game_loose">Loose...</string>
     <string name="game_win">You won !</string>
+    <string name="logo">Logo</string>
+    <string name="unicorn">I AM A UNICOOOORN !</string>
+    <string name="emmachefland">I am new to EmmaChefLand</string>
 </resources>
