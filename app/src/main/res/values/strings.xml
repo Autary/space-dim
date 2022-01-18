@@ -19,16 +19,18 @@
     <string name="waiting">Waiting</string>
     <string name="fake_level_name">You\'re currently traveling in the galaxy 1</string>
     <string name="win_img_desc">Win Image</string>
+    <string name="loose_img_desc">Loose Image</string>
     <string name="landing_success">You\'ve successfully landed on the moon,</string>
     <string name="launch_again">RETRY</string>
     <string name="high_scores">HIGHSCORE</string>
     <string name="landing_failed">Ohh... huston we had a problem</string>
     <string name="mission_failed">Mission failed</string>
-    <string name="game_loose">Loose...</string>
+    <string name="game_loose">Haha looser !</string>
     <string name="game_win">What a team !</string>
     <string name="logo">Logo</string>
     <string name="unicorn">I AM A UNICOOOORN !</string>
     <string name="emmachefland">I am new to EmmaChefLand</string>
     <string name="score_dsc">Score image</string>
     <string name="room_name">Room name</string>
+    <string name="score">Score\n0</string>
 </resources>
