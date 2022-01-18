@@ -63,11 +63,10 @@
             android:name="com.example.spacedim.fragment.SocketFragment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
             app:layout_constraintBottom_toTopOf="@+id/joinRoom"
             app:layout_constraintEnd_toEndOf="@+id/mainTitle"
-            app:layout_constraintStart_toStartOf="@+id/mainTitle"
-            app:layout_constraintTop_toBottomOf="@+id/roomInput" />
+            app:layout_constraintStart_toStartOf="@+id/mainTitle" />
 
         <Button
             android:id="@+id/joinRoom"
