@@ -10,6 +10,10 @@ import java.lang.Exception
 import com.example.spacedim.classes.Event
 
 class WsViewModel : ViewModel() {
+
+
+
+
     private val client = OkHttpClient();
     lateinit var ws: WebSocket;
     lateinit var listener: EchoWebSocketListener;
@@ -25,6 +29,11 @@ class WsViewModel : ViewModel() {
 }
 
 class EchoWebSocketListener() : WebSocketListener() {
+
+    private val _eventGoToPlay = MutableLiveData<Boolean>()
+    val eventGoToPlay: LiveData<Boolean>
+        get() = _eventGoToPlay
+
 
     private val _eventMessage = MutableLiveData<Event>()
     val eventMessage: LiveData<Event>
@@ -42,11 +51,12 @@ class EchoWebSocketListener() : WebSocketListener() {
 
         try {
             val response = PolymoObject.adapterSpace.fromJson(str)
-
             response?.let{
                 _eventMessage.postValue(it)
             }
-
+            if(response is Event.GameStarted) {
+                _eventGoToPlay.postValue(true)
+            }
             Log.i(this.javaClass.name, response.toString())
         }catch (exeption: Exception){
             Log.i(this.javaClass.name, exeption.toString())
