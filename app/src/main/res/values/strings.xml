@@ -37,4 +37,5 @@
     <string name="debug_win">[DEBUG] to win</string>
     <string name="debug_loose">[DEBUG] to loose</string>
     <string name="fake_event_txt">Il y a trop de gaz !</string>
+    <string name="room">Room name</string>
 </resources>

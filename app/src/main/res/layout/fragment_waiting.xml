@@ -13,6 +13,7 @@
             android:id="@+id/imageView3"
             android:layout_width="274dp"
             android:layout_height="185dp"
+            android:contentDescription="@string/logo"
             android:src="@drawable/logo_waiting_2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -38,7 +39,8 @@
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView3"
-            app:layout_constraintVertical_bias="0.093" />
+            app:layout_constraintVertical_bias="0.093"
+            tools:ignore="TextContrastCheck" />
 
         <fragment
             android:id="@+id/socket_status"
@@ -63,18 +65,20 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="TextContrastCheck" />
 
         <TextView
             android:id="@+id/roomName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Room name"
+            android:text="@string/room"
             android:textColor="@color/less_visible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/playButton" />
+            app:layout_constraintTop_toBottomOf="@+id/playButton"
+            tools:ignore="TextContrastCheck" />
 
         <ScrollView
             android:id="@+id/playerList"
@@ -89,12 +93,13 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/roomName">
+            app:layout_constraintTop_toBottomOf="@+id/roomName"
+            tools:ignore="SpeakableTextPresentCheck">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <TableLayout
                     android:id="@+id/playersList"
