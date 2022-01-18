@@ -11,8 +11,8 @@
 
         <ImageView
             android:id="@+id/imageView3"
-            android:layout_width="330dp"
-            android:layout_height="330dp"
+            android:layout_width="274dp"
+            android:layout_height="185dp"
             android:src="@drawable/logo_waiting_2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -35,30 +35,34 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/socket_status"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+            app:layout_constraintTop_toBottomOf="@+id/imageView3"
+            app:layout_constraintVertical_bias="0.093" />
 
         <fragment
             android:id="@+id/socket_status"
             android:name="com.example.spacedim.fragment.SocketFragment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="4dp"
+            android:layout_marginBottom="20dp"
             app:layout_constraintBottom_toTopOf="@+id/playButton"
             app:layout_constraintEnd_toEndOf="@+id/mainText"
+            app:layout_constraintHorizontal_bias="0.496"
             app:layout_constraintStart_toStartOf="@+id/mainText" />
 
         <Button
             android:id="@+id/playButton"
             android:layout_width="190dp"
             android:layout_height="85dp"
-            android:layout_marginBottom="150dp"
+            android:layout_marginBottom="332dp"
             android:background="@drawable/custom_button_purple"
             android:text="@string/ready"
             android:textSize="20sp"
             app:backgroundTint="@null"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
@@ -72,7 +76,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/playButton" />
 
-        <androidx.cardview.widget.CardView
+        <ScrollView
             android:id="@+id/playerList"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -82,18 +86,26 @@
             android:layout_marginBottom="16dp"
             android:background="#00FFFFFF"
             app:cardBackgroundColor="#00FFFFFF"
-            app:cardElevation="0dp"
-            app:cardMaxElevation="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/roomName">
 
-            <fragment
-                android:id="@+id/fragment3"
-                android:name="com.example.spacedim.fragment.PlayerCardFragment"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </androidx.cardview.widget.CardView>
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <TableLayout
+                    android:id="@+id/playersList"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+
+                </TableLayout>
+
+            </LinearLayout>
+        </ScrollView>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
