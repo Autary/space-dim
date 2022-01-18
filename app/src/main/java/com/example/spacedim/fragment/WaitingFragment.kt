@@ -12,8 +12,6 @@ import com.example.retrofit.overview.HttpViewModel
 import com.example.spacedim.interfaces.LifeCycleLogs
 import com.example.spacedim.R
 import com.example.spacedim.databinding.FragmentWaitingBinding
-import com.example.spacedim.sharedViewModel.wsViewModel
-import com.example.spacedim.databinding.FragmentWaitingBinding
 import com.example.spacedim.sharedViewModel.WsViewModel
 
 class WaitingFragment : Fragment(), LifeCycleLogs {

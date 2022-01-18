@@ -30,4 +30,5 @@
     <string name="unicorn">I AM A UNICOOOORN !</string>
     <string name="emmachefland">I am new to EmmaChefLand</string>
     <string name="score_dsc">Score image</string>
+    <string name="room_name">Room name</string>
 </resources>
