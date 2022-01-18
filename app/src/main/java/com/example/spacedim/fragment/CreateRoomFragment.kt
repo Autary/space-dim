@@ -1,5 +1,6 @@
 package com.example.spacedim.fragment
 
+import android.app.usage.UsageEvents
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -14,7 +15,9 @@ import androidx.navigation.findNavController
 import com.example.retrofit.overview.HttpViewModel
 import com.example.spacedim.interfaces.LifeCycleLogs
 import com.example.spacedim.R
+import com.example.spacedim.classes.Event
 import com.example.spacedim.databinding.FragmentCreateRoomBinding
+import com.example.spacedim.sharedViewModel.PolymoObject
 import com.example.spacedim.sharedViewModel.WsViewModel
 
 class CreateRoomFragment : Fragment(), LifeCycleLogs {
@@ -28,7 +31,13 @@ class CreateRoomFragment : Fragment(), LifeCycleLogs {
         val binding = FragmentCreateRoomBinding.inflate(inflater)
 
         binding.joinRoom.setOnClickListener { view : View ->
+
+
+
+
             if(!binding.roomInput.text.isNullOrBlank()){
+
+
                 // to change
                 viewModel.user.value?.let {  wsviewModel.createWS(binding.roomInput.text.toString(), it.id) }
 
