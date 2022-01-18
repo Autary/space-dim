@@ -29,7 +29,7 @@ class CreateRoomFragment : Fragment(), LifeCycleLogs {
             R.layout.fragment_create_room, container, false)
 
         binding.joinRoom.setOnClickListener { view : View ->
-            viewModel.user.value?.let {  wsviewModel.createWS("Henri", it.id) }
+            //viewModel.user.value?.let {  wsviewModel.createWS("Henri", it.id) }
 
             Log.i("TESTEEEEE","ws://spacedim.async-agency.com:8081/ws/join/Henri/"+viewModel.user.value?.let { it.id })
 

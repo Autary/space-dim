@@ -17,6 +17,17 @@ import com.example.spacedim.interfaces.LifeCycleLogs
 import com.example.spacedim.R
 import com.example.spacedim.databinding.FragmentGameBinding
 import com.example.spacedim.viewModel.GameViewModel
+import android.os.CountDownTimer
+import android.os.Handler
+
+import android.widget.ProgressBar
+import android.view.Gravity
+
+
+
+
+
+
 
 class GameFragment : Fragment(), LifeCycleLogs {
     private lateinit var viewModel: GameViewModel
@@ -32,6 +43,10 @@ class GameFragment : Fragment(), LifeCycleLogs {
 
         viewModel.uiElements.observe(viewLifecycleOwner, Observer { newUIElements ->
             viewModel.uiElements.value?.let { setBtn(it,binding) }
+        })
+
+        viewModel.timer.observe(viewLifecycleOwner, Observer { newTimer ->
+            viewModel.timer.value?.let {gameTimer(it,binding) }
         })
 
         binding.fakeLooseBtn.setOnClickListener { view : View ->
@@ -74,6 +89,28 @@ class GameFragment : Fragment(), LifeCycleLogs {
             }
 
         }
+    }
+
+    private fun gameTimer(time : Int, binding : FragmentGameBinding){
+        val timerProgressBar: CountDownTimer
+        var i = 0
+
+        val pb = binding.progressBar
+        pb.progress = i
+        pb.max = time
+
+        timerProgressBar = object : CountDownTimer(time.toLong(), 100) {
+            override fun onTick(millisUntilFinished: Long) {
+                i++
+                pb.progress = i as Int * time / (time / 100)
+            }
+
+            override fun onFinish() {
+                i++
+                pb.progress = time
+            }
+        }
+        timerProgressBar.start()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
