@@ -8,31 +8,36 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
 import com.example.retrofit.overview.HttpViewModel
-import com.example.spacedim.Event
 import com.example.spacedim.interfaces.LifeCycleLogs
 import com.example.spacedim.R
 import com.example.spacedim.databinding.FragmentWaintingBinding
-import com.squareup.moshi.Moshi
-import com.squareup.moshi.adapters.PolymorphicJsonAdapterFactory
-import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import com.example.spacedim.interfaces.MessageListener
+import com.example.spacedim.sharedViewModel.wsViewModel
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
 class WaintingFragment : Fragment(), LifeCycleLogs {
+
     private val viewModel: HttpViewModel by activityViewModels()
+    private val wsViewModel: wsViewModel by activityViewModels()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val binding = DataBindingUtil.inflate<FragmentWaintingBinding>(inflater,
             R.layout.fragment_wainting, container, false)
+
         binding.playButton.setOnClickListener { view : View ->
             Log.i("TESTEEEEE","{\"type\":\"READY\", \"value\":true}")
             //view.findNavController().navigate(R.id.action_waintingFragment_to_gameFragment)
         }
 
-
         return binding.root
     }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super<Fragment>.onCreate(savedInstanceState)
