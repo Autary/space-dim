@@ -11,7 +11,7 @@ import androidx.fragment.app.activityViewModels
 import com.example.retrofit.overview.HttpViewModel
 import com.example.spacedim.interfaces.LifeCycleLogs
 import com.example.spacedim.R
-import com.example.spacedim.databinding.FragmentWaintingBinding
+import com.example.spacedim.databinding.FragmentWaitingBinding
 import com.example.spacedim.sharedViewModel.wsViewModel
 
 class WaitingFragment : Fragment(), LifeCycleLogs {
@@ -23,7 +23,7 @@ class WaitingFragment : Fragment(), LifeCycleLogs {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = DataBindingUtil.inflate<FragmentWaintingBinding>(inflater,
+        val binding = DataBindingUtil.inflate<FragmentWaitingBinding>(inflater,
             R.layout.fragment_waiting, container, false)
 
         binding.playButton.setOnClickListener { view : View ->

@@ -7,13 +7,13 @@
     <string name="content_avatar_icon">Astronaut avatar icon</string>
     <string name="launch">Launch</string>
     <string name="waiting_room">Waiting room</string>
-    <string name="join_a_room">Enter a room name or create a game</string>
+    <string name="join_a_room">Enter a room name to join or create a game</string>
     <string name="inactive_socket">Socket inactive</string>
     <string name="active_socket">Socket active</string>
-    <string name="join_room">Join a game room</string>
+    <string name="join_room">JOIN</string>
     <string name="no_room_joined">No room joined</string>
-    <string name="set_to_ready">Set your status to Ready, when everyone is ready, game will start</string>
-    <string name="ready">I am ready</string>
+    <string name="set_to_ready">Set your status to READY\nWhen everyone is ready, game will start</string>
+    <string name="ready">READY</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="waiting">Waiting</string>
     <string name="fake_level_name">You\'re currently traveling in the galaxy 1</string>
