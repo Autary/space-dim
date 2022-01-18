@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.spacedim.classes.UIElement
+import com.example.spacedim.classes.UIType
 import com.example.spacedim.game.Action
 
 class GameViewModel : ViewModel() {
@@ -18,24 +19,14 @@ class GameViewModel : ViewModel() {
     private lateinit var actionList: MutableList<Action>
     private lateinit var elementsList: List<UIElement>
 
-    private fun getList() {
-        actionList = mutableListOf(
-            Action("Turn on the ",UIElement.Switch(3, "booster") ),
-            Action("Turn off the ",UIElement.Switch(5, "filter") ),
-            Action("Click the ",UIElement.Button(4, "pressure") ),
-            Action("Turn off the ",UIElement.Switch(7, "light") ),
-            Action("Shake ",UIElement.Shake(5, "eggs") ),
-        )
-    }
-
     // list of UIElements given by the server
     private fun getUIElements(): List<UIElement> {
         elementsList = listOf(
-            UIElement.Switch(3, "booster"),
-            UIElement.Switch(5, "filter") ,
-            UIElement.Button(4, "pressure"),
-            UIElement.Switch(7, "light"),
-            UIElement.Shake(5, "eggs"),
+            UIElement(3, UIType.BUTTON,"booster"),
+            UIElement(5, UIType.SWITCH,"filter"),
+            UIElement(4, UIType.BUTTON,"pressure"),
+            UIElement(7, UIType.SWITCH,"light"),
+            UIElement(6, UIType.SHAKE,"eggs"),
         )
         return elementsList
     }

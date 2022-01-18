@@ -48,7 +48,7 @@ class GameFragment : Fragment(), LifeCycleLogs {
 
             var grid : GridLayout = binding.gridView
 
-            when (it.type){
+            when (it.uiType){
                 UIType.BUTTON -> {
                     val viewButton = layoutInflater.inflate(R.layout.button_game, grid, false)
                     val btn : Button = viewButton.findViewById(R.id.buttonAction)
