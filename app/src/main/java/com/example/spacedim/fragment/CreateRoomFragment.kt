@@ -37,9 +37,7 @@ class CreateRoomFragment : Fragment(), LifeCycleLogs {
                 view.findNavController().navigate(R.id.action_createRoomFragment_to_waitingFragment)
             }
         }
-        wsviewModel.eventMessage.observe(viewLifecycleOwner, Observer { msg ->
-           Log.i("tydshgfjhdf", msg.toString())
-        })
+
         return binding.root
     }
 

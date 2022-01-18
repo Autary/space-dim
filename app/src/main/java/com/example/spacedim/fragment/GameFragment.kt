@@ -24,11 +24,6 @@ import android.widget.ProgressBar
 import android.view.Gravity
 
 
-
-
-
-
-
 class GameFragment : Fragment(), LifeCycleLogs {
     private lateinit var viewModel: GameViewModel
 
