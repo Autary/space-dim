@@ -24,7 +24,7 @@ class WsViewModel : ViewModel() {
 
     fun createWS(roomName:String, idUser:Int) {
         request = Request.Builder()
-                .url("ws://spacedim.async-agency.com:8081/ws/join/Solo/"+idUser)
+                .url("ws://spacedim.async-agency.com:8081/ws/join/"+roomName+"/"+idUser)
                 .build()
         listener = EchoWebSocketListener();
         ws = client.newWebSocket(request, listener)
@@ -47,7 +47,7 @@ class WsViewModel : ViewModel() {
            // Log.i(this.javaClass.name, "Receiving bytes : " + bytes.hex())
         }
         override fun onMessage(webSocket: WebSocket?, str: String) {
-            //Log.i(this.javaClass.name, "Receiving : $str")
+            Log.i(this.javaClass.name, "Receiving : $str")
 
             try {
                 val response = PolymoViewModel.adapterSpace.fromJson(str)?.let { Log.i(this.javaClass.name," response.toString()") }
