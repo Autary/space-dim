@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.findNavController
 import com.example.retrofit.overview.HttpViewModel
 import com.example.spacedim.interfaces.LifeCycleLogs
 import com.example.spacedim.R
