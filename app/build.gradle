@@ -59,4 +59,6 @@ dependencies {
 
     implementation "com.jakewharton.timber:timber:5.0.1"
     implementation 'androidx.gridlayout:gridlayout:1.0.0'
+
+    implementation 'com.github.nisrulz:sensey:1.9.0'
 }

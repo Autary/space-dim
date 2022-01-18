@@ -9,46 +9,52 @@ import com.example.spacedim.game.Action
 
 class GameViewModel : ViewModel() {
 
-    // The current action
-    var action = ""
+
     // The current score
     var score = 0
 
     var uiElements = MutableLiveData<List<UIElement>>()
     var timer = MutableLiveData<Int>()
+    var currentAction = MutableLiveData<Action>()
 
-    private lateinit var actionList: MutableList<Action>
+    private lateinit var action: Action
     private lateinit var elementsList: List<UIElement>
 
 
+   /* private fun getAction() : Action{
+        action = Action("Shake your phone ",UIElement(3, UIType.SHAKE,"") )
+        return action
+    }*/
+
     // list of UIElements given by the server
-    private fun getUIElements(): List<UIElement> {
+  /*  private fun getUIElements(): List<UIElement> {
         elementsList = listOf(
-            UIElement(3,UIType.SWITCH,"booster"),
-            UIElement(5,UIType.SWITCH, "filter") ,
-            UIElement(4,UIType.BUTTON ,"pressure"),
+            UIElement(3, UIType.BUTTON,"booster"),
+            UIElement(5, UIType.SWITCH,"filter"),
+            UIElement(4, UIType.BUTTON,"pressure"),
             UIElement(7, UIType.SWITCH,"light"),
-            UIElement(6,UIType.SHAKE ,"eggs"),
+            UIElement(6, UIType.BUTTON,"eggs"),
         )
         return elementsList
-    }
+    }*/
 
-    private fun updateTimer() : Int{
-        var time = 5000
+/* private fun updateTimer() : Int{
+     var time = 5000
 
-        return time
-    }
+     return time
+ }*/
 
-    init {
-        uiElements.value = getUIElements()
-        timer.value = updateTimer()
+ init {
+   //  uiElements.value = getUIElements()
+     ///timer.value = updateTimer()
+     //currentAction.value = getAction()
 
-        Log.i("GameViewModel", "GameViewModel created!")
+     Log.i("GameViewModel", "GameViewModel created!")
 
-    }
+ }
 
-    override fun onCleared() {
-        super.onCleared()
-        Log.i("GameViewModel", "GameViewModel destroyed!")
-    }
+ override fun onCleared() {
+     super.onCleared()
+     Log.i("GameViewModel", "GameViewModel destroyed!")
+ }
 }

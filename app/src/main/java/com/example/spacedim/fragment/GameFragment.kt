@@ -22,11 +22,18 @@ import android.os.Handler
 
 import android.widget.ProgressBar
 import android.view.Gravity
+import com.example.spacedim.game.Action
+import com.github.nisrulz.sensey.Sensey
+import com.github.nisrulz.sensey.ShakeDetector
+import com.github.nisrulz.sensey.ShakeDetector.ShakeListener
+import androidx.fragment.app.activityViewModels
+import com.example.spacedim.classes.Event
+import com.example.spacedim.sharedViewModel.WsViewModel
 
 
 class GameFragment : Fragment(), LifeCycleLogs {
     private lateinit var viewModel: GameViewModel
-
+    private val wsViewModel: WsViewModel by activityViewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -35,13 +42,27 @@ class GameFragment : Fragment(), LifeCycleLogs {
 
         viewModel = ViewModelProvider(this).get(GameViewModel::class.java)
 
+
         viewModel.uiElements.observe(viewLifecycleOwner, Observer { newUIElements ->
             viewModel.uiElements.value?.let { setBtn(it,binding) }
         })
 
         viewModel.timer.observe(viewLifecycleOwner, Observer { newTimer ->
-            viewModel.timer.value?.let {gameTimer(it,binding) }
+            viewModel.timer.value?.let { gameTimer(it,binding) }
         })
+
+        viewModel.currentAction.observe(viewLifecycleOwner, Observer { newAction ->
+            viewModel.currentAction.value?.let { setAction(it,binding) }
+        })
+
+        wsViewModel.listener.eventGameStarted.observe(viewLifecycleOwner, Observer { msg ->
+            setBtn(msg.uiElementList , binding)
+        })
+        wsViewModel.listener.eventNextAction.observe(viewLifecycleOwner, Observer { msg ->
+            setAction(msg.action , binding)
+            gameTimer(msg.action.time.toInt(),binding)
+        })
+
 
         binding.fakeLooseBtn.setOnClickListener { view : View ->
             view.findNavController().navigate(R.id.action_gameFragment_to_looseFragment)
@@ -77,11 +98,35 @@ class GameFragment : Fragment(), LifeCycleLogs {
                     }
                     grid.addView(viewSwitch)
                 }
-                UIType.SHAKE -> {
-
-                }
             }
+        }
+    }
 
+    private fun setAction(action : Action, binding: FragmentGameBinding){
+        binding.eventTextFaked.setText(action.sentence)
+        when(action.uiElement.uiType){
+            UIType.SHAKE -> {
+                Sensey.getInstance().init(context);
+                val shakeListener: ShakeListener = object : ShakeListener {
+
+                    override fun onShakeDetected() {
+                        // envoi SHAKE au server
+
+                    }
+
+                    override fun onShakeStopped() {
+
+                    }
+                }
+
+                Sensey.getInstance().startShakeDetection(4f,3000,shakeListener);
+
+                // si Action OK
+                //Sensey.getInstance().stopShakeDetection(shakeListener);
+            }
+            else -> {
+                // si le serveur à reçu l'action dans les temps
+            }
         }
     }
 
@@ -135,5 +180,6 @@ class GameFragment : Fragment(), LifeCycleLogs {
     override fun onDestroy() {
         super<Fragment>.onDestroy()
         super<LifeCycleLogs>.onDestroy()
+        Sensey.getInstance().stop();
     }
 }

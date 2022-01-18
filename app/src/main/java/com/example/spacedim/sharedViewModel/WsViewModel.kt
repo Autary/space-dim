@@ -32,9 +32,22 @@ class EchoWebSocketListener() : WebSocketListener() {
     val state: LiveData<Boolean>
         get() = _state
 
+    private val _eventGoToPlay = MutableLiveData<Boolean>()
+    val eventGoToPlay: LiveData<Boolean>
+        get() = _eventGoToPlay
+
+
     private val _eventMessage = MutableLiveData<Event>()
     val eventMessage: LiveData<Event>
         get() = _eventMessage
+
+    private val _eventGameStarted = MutableLiveData<Event.GameStarted>()
+    val eventGameStarted: LiveData<Event.GameStarted>
+        get() = _eventGameStarted
+
+    private val _eventNextAction = MutableLiveData<Event.NextAction>()
+    val eventNextAction: LiveData<Event.NextAction>
+        get() = _eventNextAction
 
     override fun onOpen(webSocket: WebSocket, response: Response?) {
        // Log.i(this.javaClass.name, "open")
@@ -42,22 +55,32 @@ class EchoWebSocketListener() : WebSocketListener() {
     }
 
     override fun onMessage(webSocket: WebSocket?, bytes: ByteString) {
-       // Log.i(this.javaClass.name, "Receiving bytes : " + bytes.hex())
+        // Log.i(this.javaClass.name, "Receiving bytes : " + bytes.hex())
     }
+
     override fun onMessage(webSocket: WebSocket?, str: String) {
         Log.i(this.javaClass.name, "Receiving : $str")
 
         try {
             val response = PolymoObject.adapterSpace.fromJson(str)
 
-            response?.let{
+            response?.let {
                 _eventMessage.postValue(it)
+                if (response is Event.GameStarted) {
+                    _eventGoToPlay.postValue(true)
+                }
+                if (response is Event.GameStarted) {
+                    _eventGameStarted.postValue(response)
+                }
+                if (response is Event.NextAction) {
+                    _eventNextAction.postValue(response)
+                }
             }
 
             Log.i(this.javaClass.name, response.toString())
-        }catch (exeption: Exception){
+        } catch (exeption: Exception) {
             Log.i(this.javaClass.name, exeption.toString())
-        }catch (exception: Throwable){
+        } catch (exception: Throwable) {
             Log.e(this.javaClass.name, exception.toString())
         }
     }
