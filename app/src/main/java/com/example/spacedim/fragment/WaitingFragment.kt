@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.core.view.children
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
@@ -15,8 +16,10 @@ import androidx.navigation.findNavController
 import com.example.retrofit.overview.HttpViewModel
 import com.example.spacedim.interfaces.LifeCycleLogs
 import com.example.spacedim.R
+import com.example.spacedim.classes.Event
 import com.example.spacedim.classes.User
 import com.example.spacedim.databinding.FragmentWaitingBinding
+import com.example.spacedim.sharedViewModel.PolymoObject
 import com.example.spacedim.sharedViewModel.WsViewModel
 import com.example.spacedim.viewModel.WaitingViewModel
 
@@ -34,30 +37,38 @@ class WaitingFragment : Fragment(), LifeCycleLogs {
 
         waitingViewModel = ViewModelProvider(this).get(WaitingViewModel::class.java)
 
-        waitingViewModel.users.observe(viewLifecycleOwner, Observer { newUsers ->
-            waitingViewModel.users.value?.let { setUsers(it,binding) }
-        })
+        binding.playButton.setOnClickListener { view: View ->
 
-        binding.playButton.setOnClickListener { view : View ->
-            Log.i("TESTEEEEE","{\"type\":\"READY\", \"value\":true}")
-            view.findNavController().navigate(R.id.action_waitingFragment_to_gameFragment)
+            val redy = PolymoObject.adapterSpace.toJson(Event.Ready(true))
+            wsViewModel.ws.send(redy)
+
+            //view.findNavController().navigate(R.id.action_waitingFragment_to_gameFragment)
         }
+        wsViewModel.listener.eventMessage.observe(viewLifecycleOwner, Observer { msg ->
 
+            if(msg is Event.WaitingForPlayer){
+                setUsers(msg.userList, binding)
+            }
+        })
         return binding.root
     }
 
     private fun setUsers(usersList : List<User>, binding: FragmentWaitingBinding) {
+        var list : TableLayout = binding.playersList
+        list.removeAllViews()
 
         usersList.forEach {
-
-            var list : TableLayout = binding.playersList
-
             val view = layoutInflater.inflate(R.layout.player_card, list, false)
-            val name : TextView = view.findViewById(R.id.playerName)
-            val status : TextView = view.findViewById(R.id.playerStatus)
+            val name: TextView = view.findViewById(R.id.playerName)
+            val status: TextView = view.findViewById(R.id.playerStatus)
 
             name.setText(it.name)
-            status.setText(it.state.name)
+
+            var me = ""
+            if(it.id === viewModel.user.value?.id){
+                me = " (me)"
+            }
+            status.setText(it.state.name+me)
 
             list.addView(view)
         }
