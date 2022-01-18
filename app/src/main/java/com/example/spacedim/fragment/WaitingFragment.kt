@@ -41,10 +41,10 @@ class WaitingFragment : Fragment(), LifeCycleLogs {
         })
 
         binding.playButton.setOnClickListener { view: View ->
-            Log.i("TESTEEEEE", "{\"type\":\"READY\", \"value\":true}")
-            val test = PolymoObject.adapterSpace.toJson(Event.Ready(true))
-            wsViewModel.ws.send(test)
-            Log.i("TESTTTTTTTTTT", "TESTTTTTTTTTT" + test)
+
+            val redy = PolymoObject.adapterSpace.toJson(Event.Ready(true))
+            wsViewModel.ws.send(redy)
+
             //view.findNavController().navigate(R.id.action_waitingFragment_to_gameFragment)
         }
 
