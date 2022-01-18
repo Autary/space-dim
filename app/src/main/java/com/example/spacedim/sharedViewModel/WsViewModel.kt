@@ -7,8 +7,12 @@ import androidx.lifecycle.ViewModel
 import com.example.spacedim.interfaces.MessageListener
 import okhttp3.*
 import okio.ByteString
+import java.lang.Exception
 
-class WsViewModel : ViewModel(), MessageListener {
+class WsViewModel : ViewModel() {
+
+
+
     private val client = OkHttpClient();
     lateinit var ws: WebSocket;
     private lateinit var listener: EchoWebSocketListener;
@@ -20,9 +24,9 @@ class WsViewModel : ViewModel(), MessageListener {
 
     fun createWS(roomName:String, idUser:Int) {
         request = Request.Builder()
-                .url("ws://spacedim.async-agency.com:8081/ws/join/"+roomName+"/"+idUser)
+                .url("ws://spacedim.async-agency.com:8081/ws/join/Solo/"+idUser)
                 .build()
-        listener = EchoWebSocketListener(this);
+        listener = EchoWebSocketListener();
         ws = client.newWebSocket(request, listener)
 
 
@@ -30,32 +34,38 @@ class WsViewModel : ViewModel(), MessageListener {
     }
 
 
-    override fun onMessage(text: String) {
-        _eventMessage.postValue(text)
-    }
 
 
-    private class EchoWebSocketListener(val messageListener: MessageListener) : WebSocketListener() {
+
+    private class EchoWebSocketListener() : WebSocketListener() {
 
         override fun onOpen(webSocket: WebSocket, response: Response?) {
-            Log.i(this.javaClass.name, "open")
+           // Log.i(this.javaClass.name, "open")
         }
 
         override fun onMessage(webSocket: WebSocket?, bytes: ByteString) {
-            Log.i(this.javaClass.name, "Receiving bytes : " + bytes.hex())
+           // Log.i(this.javaClass.name, "Receiving bytes : " + bytes.hex())
         }
         override fun onMessage(webSocket: WebSocket?, str: String) {
-            Log.i(this.javaClass.name, "Receiving : $str")
-            messageListener.onMessage(str)
+            //Log.i(this.javaClass.name, "Receiving : $str")
+
+            try {
+                val response = PolymoViewModel.adapterSpace.fromJson(str)?.let { Log.i(this.javaClass.name," response.toString()") }
+                //Log.i(this.javaClass.name, response.toString())
+            }catch (exeption: Exception){
+                //Log.i(this.javaClass.name, exeption.toString())
+            }
+
+
         }
 
         override fun onClosing(webSocket: WebSocket, code: Int, reason: String) {
             webSocket.close(NORMAL_CLOSURE_STATUS, null)
-            Log.i(this.javaClass.name, "Closing : $code / $reason")
+            //Log.i(this.javaClass.name, "Closing : $code / $reason")
         }
 
         override fun onFailure(webSocket: WebSocket?, t: Throwable, response: Response?) {
-            Log.i(this.javaClass.name, "Error : " + t.message)
+            //Log.i(this.javaClass.name, "Error : " + t.message)
         }
 
         companion object {

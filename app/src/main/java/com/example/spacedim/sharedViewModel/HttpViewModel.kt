@@ -4,8 +4,8 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.spacedim.User
-import com.example.spacedim.UserCreate
+import com.example.spacedim.classes.User
+import com.example.spacedim.classes.UserCreate
 import retrofit2.Callback
 import com.example.retrofit.network.SpaceDimApi
 import com.squareup.moshi.JsonAdapter
