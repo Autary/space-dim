@@ -25,7 +25,7 @@
     </fragment>
     <fragment
         android:id="@+id/waintingFragment"
-        android:name="com.example.spacedim.fragment.WaintingFragment"
+        android:name="com.example.spacedim.fragment.WaitingFragment"
         android:label="@string/waiting_room"
         tools:layout="@layout/fragment_wainting" >
         <action

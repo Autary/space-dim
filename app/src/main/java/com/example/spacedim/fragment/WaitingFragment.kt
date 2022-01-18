@@ -18,7 +18,7 @@ import com.example.spacedim.sharedViewModel.wsViewModel
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
-class WaintingFragment : Fragment(), LifeCycleLogs {
+class WaitingFragment : Fragment(), LifeCycleLogs {
 
     private val viewModel: HttpViewModel by activityViewModels()
     private val wsViewModel: wsViewModel by activityViewModels()
