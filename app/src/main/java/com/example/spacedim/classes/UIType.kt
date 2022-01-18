@@ -1,4 +1,4 @@
-package com.example.spacedim.`class`
+package com.example.spacedim.classes
 
 enum class UIType {
     BUTTON, SWITCH, SHAKE

@@ -2,7 +2,7 @@ package com.example.spacedim.viewModel
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
-import com.example.spacedim.`class`.UIElement
+import com.example.spacedim.classes.UIElement
 import com.example.spacedim.game.Action
 
 class GameViewModel : ViewModel() {

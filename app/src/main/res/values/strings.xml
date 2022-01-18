@@ -25,4 +25,6 @@
     <string name="mission_failed">Mission failed</string>
     <string name="game_loose">Loose...</string>
     <string name="game_win">You won !</string>
+    <string name="btn1"></string>
+    <string name="btn2"></string>
 </resources>
