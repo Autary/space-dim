@@ -25,15 +25,17 @@ class CreateRoomFragment : Fragment(), LifeCycleLogs {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = DataBindingUtil.inflate<FragmentCreateRoomBinding>(inflater,
-            R.layout.fragment_create_room, container, false)
+        val binding = FragmentCreateRoomBinding.inflate(inflater)
 
         binding.joinRoom.setOnClickListener { view : View ->
-            //viewModel.user.value?.let {  wsviewModel.createWS("Henri", it.id) }
+            if(!binding.roomInput.text.isNullOrBlank()){
+                // to change
+                viewModel.user.value?.let {  wsviewModel.createWS(binding.roomInput.text.toString(), it.id) }
 
-            Log.i("TESTEEEEE","ws://spacedim.async-agency.com:8081/ws/join/Henri/"+viewModel.user.value?.let { it.id })
+                Log.i("TESTEEEEE","ws://spacedim.async-agency.com:8081/ws/join/"+binding.roomInput.text.toString()+"/"+viewModel.user.value?.let { it.id })
 
-            view.findNavController().navigate(R.id.action_createRoomFragment_to_waitingFragment)
+                view.findNavController().navigate(R.id.action_createRoomFragment_to_waitingFragment)
+            }
         }
         wsviewModel.eventMessage.observe(viewLifecycleOwner, Observer { msg ->
            Log.i("tydshgfjhdf", msg.toString())

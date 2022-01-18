@@ -51,5 +51,19 @@
             app:layout_constraintEnd_toEndOf="@+id/joinRoom"
             app:layout_constraintStart_toStartOf="@+id/joinRoom"
             app:layout_constraintTop_toBottomOf="@+id/joinRoom" />
+
+        <EditText
+            android:id="@+id/roomInput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:ems="10"
+            android:hint="RoomName"
+            android:inputType="textPersonName"
+            android:minHeight="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/joinRoomTxt" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

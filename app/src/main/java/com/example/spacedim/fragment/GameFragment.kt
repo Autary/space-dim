@@ -36,8 +36,7 @@ class GameFragment : Fragment(), LifeCycleLogs {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = DataBindingUtil.inflate<FragmentGameBinding>(inflater,
-            R.layout.fragment_game, container, false)
+        val binding = FragmentGameBinding.inflate(inflater)
 
         viewModel = ViewModelProvider(this).get(GameViewModel::class.java)
 

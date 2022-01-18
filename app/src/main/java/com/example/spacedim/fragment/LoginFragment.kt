@@ -23,8 +23,7 @@ class LoginFragment : Fragment(), LifeCycleLogs {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View?{
-        val binding = DataBindingUtil.inflate<FragmentLoginBinding>(inflater,
-            R.layout.fragment_login, container, false)
+        val binding = FragmentLoginBinding.inflate(inflater)
 
         viewModel.eventGoToCreateRoom.observe(viewLifecycleOwner, Observer { goToCreateRoom ->
             if (goToCreateRoom)
