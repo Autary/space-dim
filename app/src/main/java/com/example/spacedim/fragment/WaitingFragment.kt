@@ -8,15 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.Observer
 import com.example.retrofit.overview.HttpViewModel
 import com.example.spacedim.interfaces.LifeCycleLogs
 import com.example.spacedim.R
 import com.example.spacedim.databinding.FragmentWaintingBinding
-import com.example.spacedim.interfaces.MessageListener
 import com.example.spacedim.sharedViewModel.wsViewModel
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 
 class WaitingFragment : Fragment(), LifeCycleLogs {
 
@@ -28,7 +24,7 @@ class WaitingFragment : Fragment(), LifeCycleLogs {
         savedInstanceState: Bundle?
     ): View? {
         val binding = DataBindingUtil.inflate<FragmentWaintingBinding>(inflater,
-            R.layout.fragment_wainting, container, false)
+            R.layout.fragment_waiting, container, false)
 
         binding.playButton.setOnClickListener { view : View ->
             Log.i("TESTEEEEE","{\"type\":\"READY\", \"value\":true}")
