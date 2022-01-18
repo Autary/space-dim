@@ -8,7 +8,7 @@ import com.example.spacedim.interfaces.MessageListener
 import okhttp3.*
 import okio.ByteString
 
-class wsViewModel : ViewModel(), MessageListener {
+class WsViewModel : ViewModel(), MessageListener {
     private val client = OkHttpClient();
     lateinit var ws: WebSocket;
     private lateinit var listener: EchoWebSocketListener;
@@ -31,7 +31,7 @@ class wsViewModel : ViewModel(), MessageListener {
 
 
     override fun onMessage(text: String) {
-        _eventMessage.value = text
+        _eventMessage.postValue(text)
     }
 
 

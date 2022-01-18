@@ -6,52 +6,77 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_win">
+
+        <Button
+            android:id="@+id/scoreBtn"
+            android:layout_width="170dp"
+            android:layout_height="75dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/custom_button_brown"
+            android:text="@string/high_scores"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            app:backgroundTint="@null"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="TextContrastCheck" />
+
+        <Button
+            android:id="@+id/retryBtn"
+            android:layout_width="170dp"
+            android:layout_height="75dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/custom_button_purple"
+            android:text="@string/launch_again"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            app:backgroundTint="@null"
+            app:layout_constraintBottom_toTopOf="@+id/scoreBtn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="TextContrastCheck" />
 
         <ImageView
-            android:id="@+id/imageMoon"
-            style="@style/endGameImage"
+            android:id="@+id/imageView"
+            android:layout_width="358dp"
+            android:layout_height="329dp"
             android:contentDescription="@string/win_img_desc"
-            android:src="@drawable/moon"
+            android:src="@drawable/logo_win"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/looseTxt"
-            style="@style/activity_title"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:text="@string/landing_success"
-            android:textColor="@color/design_default_color_secondary"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageMoon" />
-
-        <Button
-            android:id="@+id/scoreBtn"
+            android:id="@+id/winText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/high_scores"
-            app:backgroundTint="@color/less_visible"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/retryBtn"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/looseTxt" />
-
-        <Button
-            android:id="@+id/retryBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/launch_again"
-            app:layout_constraintBottom_toBottomOf="@+id/scoreBtn"
+            android:shadowColor="#BDBDBD"
+            android:shadowDx="5"
+            android:shadowDy="5"
+            android:shadowRadius="1"
+            android:text="@string/game_win"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/scoreBtn"
-            app:layout_constraintTop_toTopOf="@+id/scoreBtn" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+        <ImageView
+            android:id="@+id/scoreImg"
+            android:layout_width="249dp"
+            android:layout_height="186dp"
+            android:layout_marginEnd="40dp"
+            android:contentDescription="@string/score_dsc"
+            android:src="@drawable/score_win"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/winText"
+            tools:ignore="ImageContrastCheck" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
