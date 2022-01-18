@@ -8,32 +8,27 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.Observer
-import androidx.navigation.findNavController
 import com.example.retrofit.overview.HttpViewModel
 import com.example.spacedim.interfaces.LifeCycleLogs
 import com.example.spacedim.R
-import com.example.spacedim.databinding.FragmentWaintingBinding
-import com.example.spacedim.interfaces.MessageListener
-import com.example.spacedim.sharedViewModel.wsViewModel
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
+import com.example.spacedim.databinding.FragmentWaitingBinding
+import com.example.spacedim.sharedViewModel.WsViewModel
 
-class WaintingFragment : Fragment(), LifeCycleLogs {
+class WaitingFragment : Fragment(), LifeCycleLogs {
 
     private val viewModel: HttpViewModel by activityViewModels()
-    private val wsViewModel: wsViewModel by activityViewModels()
+    private val wsViewModel: WsViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = DataBindingUtil.inflate<FragmentWaintingBinding>(inflater,
-            R.layout.fragment_wainting, container, false)
+        val binding = DataBindingUtil.inflate<FragmentWaitingBinding>(inflater,
+            R.layout.fragment_waiting, container, false)
 
         binding.playButton.setOnClickListener { view : View ->
             Log.i("TESTEEEEE","{\"type\":\"READY\", \"value\":true}")
-            //view.findNavController().navigate(R.id.action_waintingFragment_to_gameFragment)
+            //view.findNavController().navigate(R.id.action_waitingFragment_to_gameFragment)
         }
 
         return binding.root
