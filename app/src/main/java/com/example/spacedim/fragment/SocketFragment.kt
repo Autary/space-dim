@@ -6,9 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
 import com.example.spacedim.interfaces.LifeCycleLogs
 import com.example.spacedim.R
+import com.example.spacedim.classes.Event
 import com.example.spacedim.databinding.FragmentSocketBinding
+import com.example.spacedim.sharedViewModel.WsViewModel
 
 class SocketFragment : Fragment(), LifeCycleLogs {
 
@@ -17,6 +21,7 @@ class SocketFragment : Fragment(), LifeCycleLogs {
         savedInstanceState: Bundle?
     ): View? {
         val binding = FragmentSocketBinding.inflate(inflater)
+
         return binding.root
     }
 

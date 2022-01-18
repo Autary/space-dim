@@ -37,10 +37,13 @@ class WaitingFragment : Fragment() {
 
         waitingViewModel = ViewModelProvider(this).get(WaitingViewModel::class.java)
 
+        binding.wsViewModel = wsViewModel
+        binding.lifecycleOwner = viewLifecycleOwner
+
         binding.playButton.setOnClickListener { view: View ->
 
-            val redy = PolymoObject.adapterSpace.toJson(Event.Ready(true))
-            wsViewModel.ws.send(redy)
+            val ready = PolymoObject.adapterSpace.toJson(Event.Ready(true))
+            wsViewModel.ws.send(ready)
 
            // view.findNavController().navigate(R.id.action_waitingFragment_to_gameFragment)
         }
@@ -50,7 +53,6 @@ class WaitingFragment : Fragment() {
             }
         })
         wsViewModel.listener.eventMessage.observe(viewLifecycleOwner, Observer { msg ->
-
             if(msg is Event.WaitingForPlayer){
                 setUsers(msg.userList, binding)
             }

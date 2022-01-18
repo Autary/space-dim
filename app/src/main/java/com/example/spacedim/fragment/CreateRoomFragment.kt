@@ -30,6 +30,9 @@ class CreateRoomFragment : Fragment(), LifeCycleLogs {
     ): View? {
         val binding = FragmentCreateRoomBinding.inflate(inflater)
 
+        binding.state = false
+        binding.lifecycleOwner = viewLifecycleOwner
+
         binding.joinRoom.setOnClickListener { view : View ->
 
 

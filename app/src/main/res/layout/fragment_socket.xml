@@ -3,7 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".fragment.SocketFragment">
-
+    <data>
+        <variable
+            name="state"
+            type="Boolean" />
+    </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -13,6 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:clickable="false"
+            android:checked="@{state}"
             android:text="@string/inactive_socket"
             android:textColor="@color/less_visible"
             app:layout_constraintBottom_toBottomOf="parent"

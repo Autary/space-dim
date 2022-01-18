@@ -3,6 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".fragment.WaitingFragment">
+    <data>
+        <variable
+            name="wsViewModel"
+            type="com.example.spacedim.sharedViewModel.WsViewModel" />
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -22,15 +27,16 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <fragment
+        <Switch
+            android:clickable="false"
             android:id="@+id/socket_status"
-            android:name="com.example.spacedim.fragment.SocketFragment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:checked="@{wsViewModel.listener.state}"
             app:layout_constraintEnd_toEndOf="@+id/mainText"
             app:layout_constraintStart_toStartOf="@+id/mainText"
-            app:layout_constraintTop_toBottomOf="@+id/mainText" />
+            app:layout_constraintTop_toBottomOf="@+id/mainText"/>
 
         <Button
             android:id="@+id/playButton"
@@ -47,7 +53,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Room name"
+            android:text="@{wsViewModel.room}"
             android:textColor="@color/less_visible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
