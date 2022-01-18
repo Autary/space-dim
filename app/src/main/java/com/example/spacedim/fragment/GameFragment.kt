@@ -32,12 +32,7 @@ class GameFragment : Fragment(), LifeCycleLogs {
 
         viewModel = ViewModelProvider(this).get(GameViewModel::class.java)
 
-
-
         setBtn(binding)
-
-
-
 
         binding.fakeLooseBtn.setOnClickListener { view : View ->
             view.findNavController().navigate(R.id.action_gameFragment_to_looseFragment)
@@ -60,7 +55,7 @@ class GameFragment : Fragment(), LifeCycleLogs {
                     val view2 = layoutInflater.inflate(R.layout.button_game, grid, false)
                     val btn2 : Button = view2.findViewById(R.id.buttonAction)
                     btn2.setText(it.content)
-                    btn2.setOnClickListener{
+                    btn2.setOnClickListener{ view : View ->
                         Log.i("GameFragmentButton", it.id.toString())
                     }
                     grid.addView(view2)
@@ -68,9 +63,8 @@ class GameFragment : Fragment(), LifeCycleLogs {
                 UIType.SWITCH -> {
                     val viewSwitch = layoutInflater.inflate(R.layout.switch_game_button, grid, false)
                     val switch : Switch = viewSwitch.findViewById(R.id.switchAction)
-                    switch.id = it.id
                     switch.setText(it.content)
-                    switch.setOnClickListener{
+                    switch.setOnClickListener{ view : View ->
                         Log.i("GameFragmentSwitch", it.id.toString())
                     }
                     grid.addView(viewSwitch)
@@ -82,14 +76,6 @@ class GameFragment : Fragment(), LifeCycleLogs {
 
         }
     }
-
-    private fun setArgumentsButton(id: Int, textButton : String, btn: Button)
-    {
-
-        //val btn : Button = findViewById(R.id.buttonAction)
-        //btn.setText(textButton)
-    }
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super<Fragment>.onCreate(savedInstanceState)
