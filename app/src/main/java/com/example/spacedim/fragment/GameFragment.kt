@@ -22,11 +22,10 @@ import android.os.Handler
 
 import android.widget.ProgressBar
 import android.view.Gravity
-
-
-
-
-
+import com.example.spacedim.game.Action
+import com.github.nisrulz.sensey.Sensey
+import com.github.nisrulz.sensey.ShakeDetector
+import com.github.nisrulz.sensey.ShakeDetector.ShakeListener
 
 
 class GameFragment : Fragment(), LifeCycleLogs {
@@ -40,12 +39,17 @@ class GameFragment : Fragment(), LifeCycleLogs {
 
         viewModel = ViewModelProvider(this).get(GameViewModel::class.java)
 
+
         viewModel.uiElements.observe(viewLifecycleOwner, Observer { newUIElements ->
             viewModel.uiElements.value?.let { setBtn(it,binding) }
         })
 
         viewModel.timer.observe(viewLifecycleOwner, Observer { newTimer ->
-            viewModel.timer.value?.let {gameTimer(it,binding) }
+            viewModel.timer.value?.let { gameTimer(it,binding) }
+        })
+
+        viewModel.currentAction.observe(viewLifecycleOwner, Observer { newAction ->
+            viewModel.currentAction.value?.let { setAction(it,binding) }
         })
 
         binding.fakeLooseBtn.setOnClickListener { view : View ->
@@ -82,11 +86,31 @@ class GameFragment : Fragment(), LifeCycleLogs {
                     }
                     grid.addView(viewSwitch)
                 }
-                UIType.SHAKE -> {
-
-                }
             }
+        }
+    }
 
+    private fun setAction(action : Action, binding: FragmentGameBinding){
+        binding.eventTextFaked.setText(action.sentence)
+        when(action.uiElement.uiType){
+            UIType.SHAKE -> {
+                Sensey.getInstance().init(context);
+                val shakeListener: ShakeListener = object : ShakeListener {
+                    override fun onShakeDetected() {
+                        Log.i("GameFragmentAction", "shake shake")
+                    }
+
+                    override fun onShakeStopped() {
+                        Log.i("GameFragmentAction", "stop shake")
+                    }
+                }
+                //Sensey.getInstance().startShakeDetection(shakeListener);
+                Sensey.getInstance().startShakeDetection(10f,1000,shakeListener);
+                //Sensey.getInstance().stopShakeDetection(shakeListener);
+            }
+            else -> {
+                Log.i("GameFragmentAction", action.uiElement.uiType.toString())
+            }
         }
     }
 
@@ -140,5 +164,6 @@ class GameFragment : Fragment(), LifeCycleLogs {
     override fun onDestroy() {
         super<Fragment>.onDestroy()
         super<LifeCycleLogs>.onDestroy()
+        Sensey.getInstance().stop();
     }
 }

@@ -9,16 +9,22 @@ import com.example.spacedim.game.Action
 
 class GameViewModel : ViewModel() {
 
-    // The current action
-    var action = ""
+
     // The current score
     var score = 0
 
     var uiElements = MutableLiveData<List<UIElement>>()
     var timer = MutableLiveData<Int>()
+    var currentAction = MutableLiveData<Action>()
 
-    private lateinit var actionList: MutableList<Action>
+    private lateinit var action: Action
     private lateinit var elementsList: List<UIElement>
+
+
+    private fun getAction() : Action{
+        action = Action("Shake your phone ",UIElement(3, UIType.SHAKE,"") )
+        return action
+    }
 
     // list of UIElements given by the server
     private fun getUIElements(): List<UIElement> {
@@ -27,7 +33,7 @@ class GameViewModel : ViewModel() {
             UIElement(5, UIType.SWITCH,"filter"),
             UIElement(4, UIType.BUTTON,"pressure"),
             UIElement(7, UIType.SWITCH,"light"),
-            UIElement(6, UIType.SHAKE,"eggs"),
+            UIElement(6, UIType.BUTTON,"eggs"),
         )
         return elementsList
     }
@@ -41,6 +47,7 @@ class GameViewModel : ViewModel() {
     init {
         uiElements.value = getUIElements()
         timer.value = updateTimer()
+        currentAction.value = getAction()
 
         Log.i("GameViewModel", "GameViewModel created!")
 
