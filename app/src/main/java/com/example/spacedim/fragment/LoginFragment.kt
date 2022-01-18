@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import com.example.retrofit.overview.HttpViewModel
 import com.example.spacedim.interfaces.LifeCycleLogs
@@ -21,15 +22,18 @@ class LoginFragment : Fragment(), LifeCycleLogs {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View?{
         val binding = DataBindingUtil.inflate<FragmentLoginBinding>(inflater,
             R.layout.fragment_login, container, false)
-        binding.launchButton.setOnClickListener { view : View ->
 
+        viewModel.eventGoToCreateRoom.observe(viewLifecycleOwner, Observer { goToCreateRoom ->
+            if (goToCreateRoom)
+                view?.findNavController()?.navigate(R.id.action_loginFragment_to_createRoomFragment)
+        })
 
+        binding.launchButton.setOnClickListener {
             if (!binding.nameInput.text.isNullOrBlank()) {
                 viewModel.addUser(binding.nameInput.text.toString())
-                view.findNavController().navigate(R.id.action_loginFragment_to_createRoomFragment)
             }
         }
 

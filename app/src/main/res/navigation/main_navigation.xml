@@ -20,16 +20,16 @@
         android:label="@string/waiting_room"
         tools:layout="@layout/fragment_create_room" >
         <action
-            android:id="@+id/action_createRoomFragment_to_waintingFragment"
-            app:destination="@id/waintingFragment" />
+            android:id="@+id/action_createRoomFragment_to_waitingFragment"
+            app:destination="@id/waitingFragment" />
     </fragment>
     <fragment
-        android:id="@+id/waintingFragment"
-        android:name="com.example.spacedim.fragment.WaintingFragment"
+        android:id="@+id/waitingFragment"
+        android:name="com.example.spacedim.fragment.WaitingFragment"
         android:label="@string/waiting_room"
-        tools:layout="@layout/fragment_wainting" >
+        tools:layout="@layout/fragment_waiting" >
         <action
-            android:id="@+id/action_waintingFragment_to_gameFragment"
+            android:id="@+id/action_waitingFragment_to_gameFragment"
             app:destination="@id/gameFragment" />
     </fragment>
     <fragment
@@ -40,11 +40,11 @@
         <action
             android:id="@+id/action_gameFragment_to_looseFragment"
             app:destination="@id/looseFragment"
-            app:popUpTo="@id/waintingFragment" />
+            app:popUpTo="@id/waitingFragment" />
         <action
             android:id="@+id/action_gameFragment_to_winFragment"
             app:destination="@id/winFragment"
-            app:popUpTo="@id/waintingFragment" />
+            app:popUpTo="@id/waitingFragment" />
     </fragment>
     <fragment
         android:id="@+id/looseFragment"
@@ -52,8 +52,8 @@
         android:label="@string/game_loose"
         tools:layout="@layout/fragment_loose" >
         <action
-            android:id="@+id/action_looseFragment_to_waintingFragment"
-            app:destination="@id/waintingFragment" />
+            android:id="@+id/action_looseFragment_to_waitingFragment"
+            app:destination="@id/waitingFragment" />
     </fragment>
     <fragment
         android:id="@+id/winFragment"
@@ -61,7 +61,7 @@
         android:label="@string/game_win"
         tools:layout="@layout/fragment_win" >
         <action
-            android:id="@+id/action_winFragment_to_waintingFragment"
-            app:destination="@id/waintingFragment" />
+            android:id="@+id/action_winFragment_to_waitingFragment"
+            app:destination="@id/waitingFragment" />
     </fragment>
 </navigation>

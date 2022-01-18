@@ -1,27 +1,42 @@
 package com.example.spacedim.sharedViewModel
 
-import android.os.Bundle
 import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.spacedim.interfaces.MessageListener
 import okhttp3.*
 import okio.ByteString
 
-class wsViewModel : ViewModel() {
-    val client = OkHttpClient();
-    private lateinit var ws: WebSocket;
+class WsViewModel : ViewModel(), MessageListener {
+    private val client = OkHttpClient();
+    lateinit var ws: WebSocket;
     private lateinit var listener: EchoWebSocketListener;
     private lateinit var request: Request;
 
-    fun createWS() {
+    private val _eventMessage = MutableLiveData<String>()
+    val eventMessage: LiveData<String>
+        get() = _eventMessage
+
+    fun createWS(roomName:String, idUser:Int) {
         request = Request.Builder()
-                .url("ws://spacedim.async-agency.com:8081/ws/")
+                .url("ws://spacedim.async-agency.com:8081/ws/join/"+roomName+"/"+idUser)
                 .build()
-        listener = EchoWebSocketListener();
+        listener = EchoWebSocketListener(this);
         ws = client.newWebSocket(request, listener)
+
+
+
     }
 
 
-    private class EchoWebSocketListener : WebSocketListener() {
+    override fun onMessage(text: String) {
+        _eventMessage.postValue(text)
+    }
+
+
+    private class EchoWebSocketListener(val messageListener: MessageListener) : WebSocketListener() {
+
         override fun onOpen(webSocket: WebSocket, response: Response?) {
             Log.i(this.javaClass.name, "open")
         }
@@ -31,6 +46,7 @@ class wsViewModel : ViewModel() {
         }
         override fun onMessage(webSocket: WebSocket?, str: String) {
             Log.i(this.javaClass.name, "Receiving : $str")
+            messageListener.onMessage(str)
         }
 
         override fun onClosing(webSocket: WebSocket, code: Int, reason: String) {
@@ -45,5 +61,6 @@ class wsViewModel : ViewModel() {
         companion object {
             private const val NORMAL_CLOSURE_STATUS = 1000
         }
+
     }
 }
