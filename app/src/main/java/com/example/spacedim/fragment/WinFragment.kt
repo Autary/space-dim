@@ -18,7 +18,7 @@ class WinFragment : Fragment(), LifeCycleLogs {
         val binding = DataBindingUtil.inflate<FragmentWinBinding>(inflater,
             R.layout.fragment_win, container, false)
         binding.retryBtn.setOnClickListener { view : View ->
-            view.findNavController().navigate(R.id.action_winFragment_to_waintingFragment)
+            view.findNavController().navigate(R.id.action_winFragment_to_waitingFragment)
         }
         return binding.root
     }
