@@ -4,7 +4,6 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.spacedim.interfaces.MessageListener
 import okhttp3.*
 import okio.ByteString
 import java.lang.Exception
@@ -50,8 +49,8 @@ class WsViewModel : ViewModel() {
             Log.i(this.javaClass.name, "Receiving : $str")
 
             try {
-                val response = PolymoViewModel.adapterSpace.fromJson(str)?.let { Log.i(this.javaClass.name," response.toString()") }
-                //Log.i(this.javaClass.name, response.toString())
+                val response = PolymoObject.adapterSpace.fromJson(str)
+                Log.i(this.javaClass.name, response.toString())
             }catch (exeption: Exception){
                 Log.i(this.javaClass.name, exeption.toString())
             }catch (exception: Throwable){
