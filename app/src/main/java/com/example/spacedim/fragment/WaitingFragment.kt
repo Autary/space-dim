@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import androidx.cardview.widget.CardView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
@@ -16,14 +15,9 @@ import androidx.navigation.findNavController
 import com.example.retrofit.overview.HttpViewModel
 import com.example.spacedim.interfaces.LifeCycleLogs
 import com.example.spacedim.R
-import com.example.spacedim.State
-import com.example.spacedim.User
-import com.example.spacedim.classes.UIElement
-import com.example.spacedim.classes.UIType
-import com.example.spacedim.databinding.FragmentGameBinding
+import com.example.spacedim.classes.User
 import com.example.spacedim.databinding.FragmentWaitingBinding
 import com.example.spacedim.sharedViewModel.WsViewModel
-import com.example.spacedim.viewModel.GameViewModel
 import com.example.spacedim.viewModel.WaitingViewModel
 
 class WaitingFragment : Fragment(), LifeCycleLogs {
