@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.example.spacedim.classes.UIElement
@@ -19,9 +20,6 @@ import com.example.spacedim.viewModel.GameViewModel
 
 class GameFragment : Fragment(), LifeCycleLogs {
     private lateinit var viewModel: GameViewModel
-    private lateinit var binding: FragmentGameBinding
-    private lateinit var elementsList: MutableList<UIElement>
-    private lateinit var myButton: Button
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,12 +29,9 @@ class GameFragment : Fragment(), LifeCycleLogs {
 
         viewModel = ViewModelProvider(this).get(GameViewModel::class.java)
 
-
-
-        setBtn(binding)
-
-
-
+        viewModel.uiElements.observe(viewLifecycleOwner, Observer { newUIElements ->
+            viewModel.uiElements.value?.let { setBtn(it,binding) }
+        })
 
         binding.fakeLooseBtn.setOnClickListener { view : View ->
             view.findNavController().navigate(R.id.action_gameFragment_to_looseFragment)
@@ -47,8 +42,7 @@ class GameFragment : Fragment(), LifeCycleLogs {
         return binding.root
     }
 
-    private fun setBtn(binding: FragmentGameBinding) {
-        elementsList = viewModel.getElements()
+    private fun setBtn(elementsList : List<UIElement>, binding: FragmentGameBinding) {
 
         elementsList.forEach {
 
@@ -56,20 +50,19 @@ class GameFragment : Fragment(), LifeCycleLogs {
 
             when (it.type){
                 UIType.BUTTON -> {
-                    val view2 = layoutInflater.inflate(R.layout.button_game, grid, false)
-                    val btn2 : Button = view2.findViewById(R.id.buttonAction)
-                    btn2.setText(it.content)
-                    btn2.setOnClickListener{
+                    val viewButton = layoutInflater.inflate(R.layout.button_game, grid, false)
+                    val btn : Button = viewButton.findViewById(R.id.buttonAction)
+                    btn.setText(it.content)
+                    btn.setOnClickListener{ view : View ->
                         Log.i("GameFragmentButton", it.id.toString())
                     }
-                    grid.addView(view2)
+                    grid.addView(viewButton)
                 }
                 UIType.SWITCH -> {
                     val viewSwitch = layoutInflater.inflate(R.layout.switch_game_button, grid, false)
                     val switch : Switch = viewSwitch.findViewById(R.id.switchAction)
-                    switch.id = it.id
                     switch.setText(it.content)
-                    switch.setOnClickListener{
+                    switch.setOnClickListener{ view : View ->
                         Log.i("GameFragmentSwitch", it.id.toString())
                     }
                     grid.addView(viewSwitch)
@@ -81,14 +74,6 @@ class GameFragment : Fragment(), LifeCycleLogs {
 
         }
     }
-
-    private fun setArgumentsButton(id: Int, textButton : String, btn: Button)
-    {
-
-        //val btn : Button = findViewById(R.id.buttonAction)
-        //btn.setText(textButton)
-    }
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super<Fragment>.onCreate(savedInstanceState)

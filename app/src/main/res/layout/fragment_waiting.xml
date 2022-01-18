@@ -53,7 +53,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/playButton" />
 
-        <androidx.cardview.widget.CardView
+        <ScrollView
             android:id="@+id/playerList"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -63,18 +63,25 @@
             android:layout_marginBottom="16dp"
             android:background="#00FFFFFF"
             app:cardBackgroundColor="#00FFFFFF"
-            app:cardElevation="0dp"
-            app:cardMaxElevation="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/roomName">
 
-            <fragment
-                android:id="@+id/fragment3"
-                android:name="com.example.spacedim.fragment.PlayerCardFragment"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </androidx.cardview.widget.CardView>
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <TableLayout
+                    android:id="@+id/playersList"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+
+                </TableLayout>
+
+            </LinearLayout>
+        </ScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
