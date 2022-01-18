@@ -10,11 +10,12 @@
         <fragment
             android:id="@+id/mainNavHostFrag"
             android:name="androidx.navigation.fragment.NavHostFragment"
-            android:label="@string/app_name"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:navGraph="@navigation/main_navigation"
-            app:defaultNavHost="true" />
+            android:label="@string/app_name"
+            android:visibility="visible"
+            app:defaultNavHost="true"
+            app:navGraph="@navigation/main_navigation" />
     </LinearLayout>
 
 </layout>

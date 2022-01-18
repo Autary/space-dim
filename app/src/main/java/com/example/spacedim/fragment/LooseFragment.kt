@@ -18,7 +18,7 @@ class LooseFragment : Fragment(), LifeCycleLogs {
         val binding = DataBindingUtil.inflate<FragmentLooseBinding>(inflater,
             R.layout.fragment_loose, container, false)
         binding.retryBtn.setOnClickListener { view : View ->
-            view.findNavController().navigate(R.id.action_looseFragment_to_waintingFragment)
+            view.findNavController().navigate(R.id.action_looseFragment_to_waitingFragment)
         }
         return binding.root
     }
