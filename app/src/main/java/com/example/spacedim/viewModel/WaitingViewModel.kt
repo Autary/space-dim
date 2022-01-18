@@ -1,14 +1,21 @@
 package com.example.spacedim.viewModel
 
 import android.util.Log
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.retrofit.overview.HttpViewModel
 import com.example.spacedim.classes.State
 import com.example.spacedim.classes.User
+import com.example.spacedim.sharedViewModel.WsViewModel
 
 class WaitingViewModel : ViewModel() {
 
+
+
+
     var users = MutableLiveData<List<User>>()
+
     private lateinit var usersList: List<User>
 
     private fun getUsersList() : List<User>{

@@ -15,8 +15,10 @@ import androidx.navigation.findNavController
 import com.example.retrofit.overview.HttpViewModel
 import com.example.spacedim.interfaces.LifeCycleLogs
 import com.example.spacedim.R
+import com.example.spacedim.classes.Event
 import com.example.spacedim.classes.User
 import com.example.spacedim.databinding.FragmentWaitingBinding
+import com.example.spacedim.sharedViewModel.PolymoObject
 import com.example.spacedim.sharedViewModel.WsViewModel
 import com.example.spacedim.viewModel.WaitingViewModel
 
@@ -35,26 +37,29 @@ class WaitingFragment : Fragment(), LifeCycleLogs {
         waitingViewModel = ViewModelProvider(this).get(WaitingViewModel::class.java)
 
         waitingViewModel.users.observe(viewLifecycleOwner, Observer { newUsers ->
-            waitingViewModel.users.value?.let { setUsers(it,binding) }
+            waitingViewModel.users.value?.let { setUsers(it, binding) }
         })
 
-        binding.playButton.setOnClickListener { view : View ->
-            Log.i("TESTEEEEE","{\"type\":\"READY\", \"value\":true}")
-            view.findNavController().navigate(R.id.action_waitingFragment_to_gameFragment)
+        binding.playButton.setOnClickListener { view: View ->
+            Log.i("TESTEEEEE", "{\"type\":\"READY\", \"value\":true}")
+            val test = PolymoObject.adapterSpace.toJson(Event.Ready(true))
+            wsViewModel.ws.send(test)
+            Log.i("TESTTTTTTTTTT", "TESTTTTTTTTTT" + test)
+            //view.findNavController().navigate(R.id.action_waitingFragment_to_gameFragment)
         }
 
         return binding.root
     }
 
-    private fun setUsers(usersList : List<User>, binding: FragmentWaitingBinding) {
+    private fun setUsers(usersList: List<User>, binding: FragmentWaitingBinding) {
 
         usersList.forEach {
 
-            var list : TableLayout = binding.playersList
+            var list: TableLayout = binding.playersList
 
             val view = layoutInflater.inflate(R.layout.player_card, list, false)
-            val name : TextView = view.findViewById(R.id.playerName)
-            val status : TextView = view.findViewById(R.id.playerStatus)
+            val name: TextView = view.findViewById(R.id.playerName)
+            val status: TextView = view.findViewById(R.id.playerStatus)
 
             name.setText(it.name)
             status.setText(it.state.name)

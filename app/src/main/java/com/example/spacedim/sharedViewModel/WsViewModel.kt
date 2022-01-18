@@ -8,7 +8,7 @@ import okhttp3.*
 import okio.ByteString
 import java.lang.Exception
 
-class WsViewModel : ViewModel() {
+open class WsViewModel : ViewModel() {
 
 
 
