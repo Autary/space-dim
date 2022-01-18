@@ -45,6 +45,16 @@ class EchoWebSocketListener() : WebSocketListener() {
     val eventNextAction: LiveData<Event.NextAction>
         get() = _eventNextAction
 
+
+    private val _eventGameOver = MutableLiveData<Event.GameOver>()
+    val eventGameOver: LiveData<Event.GameOver>
+        get() = _eventGameOver
+
+    private val _eventNextLevel = MutableLiveData<Event.NextLevel>()
+    val eventNextLevel: LiveData<Event.NextLevel>
+        get() = _eventNextLevel
+
+
     override fun onOpen(webSocket: WebSocket, response: Response?) {
         // Log.i(this.javaClass.name, "open")
     }
@@ -54,7 +64,7 @@ class EchoWebSocketListener() : WebSocketListener() {
     }
 
     override fun onMessage(webSocket: WebSocket?, str: String) {
-        Log.i(this.javaClass.name, "Receiving : $str")
+        Log.i("TESTEEEEE", "Receiving : $str")
 
         try {
             val response = PolymoObject.adapterSpace.fromJson(str)
@@ -69,6 +79,12 @@ class EchoWebSocketListener() : WebSocketListener() {
                 }
                 if (response is Event.NextAction) {
                     _eventNextAction.postValue(response)
+                }
+                if (response is Event.GameOver) {
+                    _eventGameOver.postValue(response)
+                }
+                if (response is Event.NextLevel) {
+                    _eventNextLevel.postValue(response)
                 }
             }
 

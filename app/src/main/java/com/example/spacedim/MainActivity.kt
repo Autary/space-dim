@@ -11,6 +11,7 @@ class MainActivity : AppCompatActivity(), LifeCycleLogs {
         super<AppCompatActivity>.onCreate(savedInstanceState)
         super<LifeCycleLogs>.onCreate()
         setContentView(R.layout.activity_main)
+
         val navCtrl = this.findNavController(R.id.mainNavHostFrag)
         // android:label in navigation.xml not working, fix by this code
         navCtrl.addOnDestinationChangedListener{

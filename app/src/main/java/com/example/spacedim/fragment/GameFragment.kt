@@ -28,6 +28,7 @@ import com.github.nisrulz.sensey.ShakeDetector
 import com.github.nisrulz.sensey.ShakeDetector.ShakeListener
 import androidx.fragment.app.activityViewModels
 import com.example.spacedim.classes.Event
+import com.example.spacedim.sharedViewModel.PolymoObject
 import com.example.spacedim.sharedViewModel.WsViewModel
 
 
@@ -58,9 +59,19 @@ class GameFragment : Fragment(), LifeCycleLogs {
         wsViewModel.listener.eventGameStarted.observe(viewLifecycleOwner, Observer { msg ->
             setBtn(msg.uiElementList , binding)
         })
+        wsViewModel.listener.eventNextLevel.observe(viewLifecycleOwner, Observer { msg ->
+            setBtn(msg.uiElementList , binding)
+        })
         wsViewModel.listener.eventNextAction.observe(viewLifecycleOwner, Observer { msg ->
             setAction(msg.action , binding)
             gameTimer(msg.action.time.toInt(),binding)
+        })
+
+
+        wsViewModel.listener.eventGameOver.observe(viewLifecycleOwner, Observer { over ->
+            if(over.win == false){
+                view?.findNavController()?.navigate(R.id.action_gameFragment_to_looseFragment)
+            }
         })
 
 
@@ -84,8 +95,8 @@ class GameFragment : Fragment(), LifeCycleLogs {
                     val viewButton = layoutInflater.inflate(R.layout.button_game, grid, false)
                     val btn : Button = viewButton.findViewById(R.id.buttonAction)
                     btn.setText(it.content)
-                    btn.setOnClickListener{ view : View ->
-                        Log.i("GameFragmentButton", it.id.toString())
+                    btn.setOnClickListener{  view : View ->
+                        wsViewModel.ws.send(PolymoObject.adapterSpace.toJson(Event.PlayerAction(it)))
                     }
                     grid.addView(viewButton)
                 }
@@ -94,7 +105,8 @@ class GameFragment : Fragment(), LifeCycleLogs {
                     val switch : Switch = viewSwitch.findViewById(R.id.switchAction)
                     switch.setText(it.content)
                     switch.setOnClickListener{ view : View ->
-                        Log.i("GameFragmentSwitch", it.id.toString())
+                        wsViewModel.ws.send(PolymoObject.adapterSpace.toJson(Event.PlayerAction(it)))
+                        Log.i("TESTEEEEE",PolymoObject.adapterSpace.toJson(Event.PlayerAction(it)))
                     }
                     grid.addView(viewSwitch)
                 }

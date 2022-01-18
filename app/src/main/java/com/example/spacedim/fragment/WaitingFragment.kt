@@ -23,7 +23,7 @@ import com.example.spacedim.sharedViewModel.PolymoObject
 import com.example.spacedim.sharedViewModel.WsViewModel
 import com.example.spacedim.viewModel.WaitingViewModel
 
-class WaitingFragment : Fragment(), LifeCycleLogs {
+class WaitingFragment : Fragment() {
 
     private lateinit var waitingViewModel: WaitingViewModel
     private val viewModel: HttpViewModel by activityViewModels()
@@ -79,33 +79,5 @@ class WaitingFragment : Fragment(), LifeCycleLogs {
         }
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super<Fragment>.onCreate(savedInstanceState)
-        super<LifeCycleLogs>.onCreate()
-    }
 
-    override fun onStart() {
-        super<Fragment>.onStart()
-        super<LifeCycleLogs>.onStart()
-    }
-
-    override fun onResume() {
-        super<Fragment>.onResume()
-        super<LifeCycleLogs>.onResume()
-    }
-
-    override fun onPause() {
-        super<Fragment>.onPause()
-        super<LifeCycleLogs>.onPause()
-    }
-
-    override fun onStop() {
-        super<Fragment>.onStop()
-        super<LifeCycleLogs>.onStop()
-    }
-
-    override fun onDestroy() {
-        super<Fragment>.onDestroy()
-        super<LifeCycleLogs>.onDestroy()
-    }
 }
