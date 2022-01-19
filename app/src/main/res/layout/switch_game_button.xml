@@ -4,7 +4,7 @@
 
     <Switch
         android:id="@+id/switchAction"
-        android:layout_width="wrap_content"
+        android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/normal_margin"
         android:background="@drawable/rounded"

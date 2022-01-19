@@ -36,7 +36,6 @@ class EchoWebSocketListener() : WebSocketListener() {
     val eventGoToPlay: LiveData<Boolean>
         get() = _eventGoToPlay
 
-
     private val _eventMessage = MutableLiveData<Event>()
     val eventMessage: LiveData<Event>
         get() = _eventMessage

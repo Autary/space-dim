@@ -48,9 +48,9 @@ class GameFragment : Fragment(), LifeCycleLogs {
             viewModel.uiElements.value?.let { setBtn(it,binding) }
         })
 
-        viewModel.timer.observe(viewLifecycleOwner, Observer { newTimer ->
+        /*viewModel.timer.observe(viewLifecycleOwner, Observer { newTimer ->
             viewModel.timer.value?.let { gameTimer(it,binding) }
-        })
+        })*/
 
         viewModel.currentAction.observe(viewLifecycleOwner, Observer { newAction ->
             viewModel.currentAction.value?.let { setAction(it,binding) }
@@ -147,23 +147,27 @@ class GameFragment : Fragment(), LifeCycleLogs {
         }
     }
 
+    var timeI = 0
+    lateinit var timerProgressBar : CountDownTimer
     private fun gameTimer(time : Int, binding : FragmentGameBinding){
-        val timerProgressBar: CountDownTimer
-        var i = 0
+        timeI = 0
 
-        val pb = binding.progressBar
-        pb.progress = i
-        pb.max = time
+        if(this::timerProgressBar.isInitialized){
+            timerProgressBar.cancel()
+        }
+
+        binding.progressBar.progress = timeI
+        binding.progressBar.max = time
 
         timerProgressBar = object : CountDownTimer(time.toLong(), 100) {
             override fun onTick(millisUntilFinished: Long) {
-                i++
-                pb.progress = i as Int * time / (time / 100)
+                timeI++
+                binding.progressBar.progress = timeI as Int * time / (time / 100)
             }
 
             override fun onFinish() {
-                i++
-                pb.progress = time
+                timeI++
+                binding.progressBar.progress = time
             }
         }
         timerProgressBar.start()
