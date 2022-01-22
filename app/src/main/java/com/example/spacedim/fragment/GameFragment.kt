@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
@@ -18,7 +17,6 @@ import com.example.spacedim.R
 import com.example.spacedim.databinding.FragmentGameBinding
 import com.example.spacedim.viewModel.GameViewModel
 import android.os.CountDownTimer
-import android.os.Handler
 
 import android.widget.ProgressBar
 import android.view.Gravity
@@ -29,11 +27,14 @@ import com.github.nisrulz.sensey.ShakeDetector.ShakeListener
 import androidx.fragment.app.activityViewModels
 import com.example.spacedim.classes.Event
 import com.example.spacedim.sharedViewModel.PolymoObject
+import com.example.spacedim.viewModel.WinLoseViewModel
 import com.example.spacedim.sharedViewModel.WsViewModel
 
 
 class GameFragment : Fragment(), LifeCycleLogs {
     private lateinit var viewModel: GameViewModel
+
+    private val viewModelLoseViewModel: WinLoseViewModel by activityViewModels()
     private val wsViewModel: WsViewModel by activityViewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -72,12 +73,17 @@ class GameFragment : Fragment(), LifeCycleLogs {
 
         wsViewModel.listener.eventGameOver.observe(viewLifecycleOwner, Observer { over ->
             if(over.win == false){
+
                 view?.findNavController()?.navigate(R.id.action_gameFragment_to_looseFragment)
+            }else if(over.win == true){
+                viewModelLoseViewModel.setItem(over)
+                view?.findNavController()?.navigate(R.id.action_gameFragment_to_winFragment)
             }
         })
 
 
         binding.fakeLooseBtn.setOnClickListener { view : View ->
+            viewModelLoseViewModel.setItem(Event.GameOver(1000,false,2))
             view.findNavController().navigate(R.id.action_gameFragment_to_looseFragment)
         }
         binding.fakeWinBtn.setOnClickListener { view : View ->

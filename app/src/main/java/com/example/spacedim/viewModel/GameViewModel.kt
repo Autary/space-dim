@@ -11,7 +11,7 @@ class GameViewModel : ViewModel() {
 
 
     // The current score
-    var score = 0
+
 
     var uiElements = MutableLiveData<List<UIElement>>()
     var timer = MutableLiveData<Int>()

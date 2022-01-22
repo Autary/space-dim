@@ -16,6 +16,7 @@ class WsViewModel : ViewModel() {
     private lateinit var request: Request;
     var room = "";
 
+
     fun createWS(roomName: String, idUser: Int) {
         request = Request.Builder()
             .url("ws://spacedim.async-agency.com:8081/ws/join/" + roomName + "/" + idUser)
