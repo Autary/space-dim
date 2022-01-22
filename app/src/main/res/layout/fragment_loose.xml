@@ -9,22 +9,6 @@
         android:background="@drawable/bg_loose">
 
         <Button
-            android:id="@+id/scoreBtn"
-            android:layout_width="170dp"
-            android:layout_height="75dp"
-            android:layout_marginBottom="30dp"
-            android:background="@drawable/custom_button_brown_lighter"
-            android:text="@string/high_scores"
-            android:textColor="#FFFFFF"
-            android:textSize="20sp"
-            app:backgroundTint="@null"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:ignore="TextContrastCheck" />
-
-        <Button
             android:id="@+id/retryBtn"
             android:layout_width="170dp"
             android:layout_height="75dp"
@@ -35,9 +19,23 @@
             app:backgroundTint="@null"
             app:layout_constraintBottom_toTopOf="@+id/scoreBtn"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/scoreImgLoose"
+            tools:ignore="TextContrastCheck" />
+
+        <Button
+            android:id="@+id/scoreBtn"
+            android:layout_width="170dp"
+            android:layout_height="75dp"
+            android:background="@drawable/custom_button_brown_lighter"
+            android:text="@string/high_scores"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            app:backgroundTint="@null"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/retryBtn"
+            app:layout_constraintStart_toStartOf="@+id/retryBtn"
+            app:layout_constraintTop_toBottomOf="@+id/retryBtn"
             tools:ignore="TextContrastCheck" />
 
         <ImageView
@@ -69,8 +67,8 @@
 
         <ImageView
             android:id="@+id/scoreImgLoose"
-            android:layout_width="249dp"
-            android:layout_height="186dp"
+            android:layout_width="210dp"
+            android:layout_height="155dp"
             android:contentDescription="@string/score_dsc"
             android:src="@drawable/score_loose"
             app:layout_constraintEnd_toEndOf="parent"
