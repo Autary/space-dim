@@ -21,22 +21,22 @@ class GameViewModel : ViewModel() {
     private lateinit var elementsList: List<UIElement>
 
 
-   /* private fun getAction() : Action{
-        action = Action("Shake your phone ",UIElement(3, UIType.SHAKE,"") )
-        return action
-    }*/
+    /* private fun getAction() : Action{
+         action = Action("Shake your phone ",UIElement(3, UIType.SHAKE,"") )
+         return action
+     }*/
 
     // list of UIElements given by the server
-  /*  private fun getUIElements(): List<UIElement> {
+    private fun getUIElements(): List<UIElement> {
         elementsList = listOf(
-            UIElement(3, UIType.BUTTON,"booster"),
-            UIElement(5, UIType.SWITCH,"filter"),
-            UIElement(4, UIType.BUTTON,"pressure"),
-            UIElement(7, UIType.SWITCH,"light"),
-            UIElement(6, UIType.BUTTON,"eggs"),
+            UIElement(3, UIType.BUTTON, "booster"),
+            UIElement(5, UIType.SWITCH, "filter"),
+            UIElement(4, UIType.SWITCH, "pressure"),
+            UIElement(7, UIType.SWITCH, "light"),
+            UIElement(6, UIType.BUTTON, "eggs"),
         )
         return elementsList
-    }*/
+    }
 
 /* private fun updateTimer() : Int{
      var time = 5000
@@ -44,17 +44,17 @@ class GameViewModel : ViewModel() {
      return time
  }*/
 
- init {
-   //  uiElements.value = getUIElements()
-     ///timer.value = updateTimer()
-     //currentAction.value = getAction()
+    init {
+        uiElements.value = getUIElements()
+        ///timer.value = updateTimer()
+        //currentAction.value = getAction()
 
-     Log.i("GameViewModel", "GameViewModel created!")
+        Log.i("GameViewModel", "GameViewModel created!")
 
- }
+    }
 
- override fun onCleared() {
-     super.onCleared()
-     Log.i("GameViewModel", "GameViewModel destroyed!")
- }
+    override fun onCleared() {
+        super.onCleared()
+        Log.i("GameViewModel", "GameViewModel destroyed!")
+    }
 }

@@ -44,14 +44,14 @@ class WaitingFragment : Fragment() {
 
             val ready = PolymoObject.adapterSpace.toJson(Event.Ready(true))
             wsViewModel.ws.send(ready)
-
+            view?.findNavController()?.navigate(R.id.action_waitingFragment_to_gameFragment)
            // view.findNavController().navigate(R.id.action_waitingFragment_to_gameFragment)
         }
-        wsViewModel.listener.eventGoToPlay.observe(viewLifecycleOwner, Observer { play ->
-            if(play){
-                view?.findNavController()?.navigate(R.id.action_waitingFragment_to_gameFragment)
-            }
-        })
+        //wsViewModel.listener.eventGoToPlay.observe(viewLifecycleOwner, Observer { play ->
+         //   if(play){
+               // view?.findNavController()?.navigate(R.id.action_waitingFragment_to_gameFragment)
+         //   }
+        //})
         wsViewModel.listener.eventMessage.observe(viewLifecycleOwner, Observer { msg ->
             if(msg is Event.WaitingForPlayer){
                 setUsers(msg.userList, binding)

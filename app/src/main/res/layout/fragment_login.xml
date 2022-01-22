@@ -37,7 +37,6 @@
                 android:inputType="textPersonName"
                 android:textColor="#CB9CCC"
                 android:maxLines="1"
-                android:inputType="text"
                 tools:ignore="TextContrastCheck" />
         </com.google.android.material.textfield.TextInputLayout>
 
