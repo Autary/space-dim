@@ -35,6 +35,9 @@ android {
 }
 
 dependencies {
+    //picasso
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
     kapt "com.squareup.moshi:moshi-kotlin-codegen:1.13.0"
     //moshi
     implementation("com.squareup.moshi:moshi:1.13.0")
