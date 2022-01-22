@@ -22,6 +22,9 @@ class WinFragment : Fragment(), LifeCycleLogs {
             view.findNavController().navigate(R.id.action_winFragment_to_waitingFragment)
         }
         viewModelLoseViewModel.getItem()?.let { binding.score.setText("Score: "+it.score.toString()) }
+        binding.scoreBtn.setOnClickListener { view : View ->
+            view.findNavController().navigate(R.id.action_winFragment_to_highScoreFragment)
+        }
         return binding.root
     }
 
