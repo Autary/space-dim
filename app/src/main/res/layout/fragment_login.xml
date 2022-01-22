@@ -17,11 +17,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="42dp"
+            android:layout_marginTop="42dp"
             android:layout_marginEnd="42dp"
             android:background="@drawable/rounded"
             android:hint="@string/name"
             android:textColorHint="#CB9CCC"
-            app:layout_constraintBottom_toTopOf="@+id/launchButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/logo"
@@ -35,8 +35,8 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/rounded"
                 android:inputType="textPersonName"
-                android:textColor="#CB9CCC"
                 android:maxLines="1"
+                android:textColor="#CB9CCC"
                 tools:ignore="TextContrastCheck" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -44,15 +44,15 @@
             android:id="@+id/launchButton"
             android:layout_width="190dp"
             android:layout_height="85dp"
-            android:layout_marginBottom="150dp"
+            android:layout_marginTop="42dp"
             android:background="@drawable/custom_button_purple"
             android:text="@string/launch"
             android:textColor="#FFFFFF"
             android:textSize="20sp"
             app:backgroundTint="@null"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nameInputLayout"
             tools:ignore="TextContrastCheck,DuplicateSpeakableTextCheck" />
 
         <ImageView
