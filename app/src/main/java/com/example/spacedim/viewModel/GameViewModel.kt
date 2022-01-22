@@ -34,6 +34,14 @@ class GameViewModel : ViewModel() {
             UIElement(4, UIType.SWITCH, "pressure"),
             UIElement(7, UIType.SWITCH, "light"),
             UIElement(6, UIType.BUTTON, "eggs"),
+            UIElement(4, UIType.SWITCH, "pressure"),
+            UIElement(7, UIType.SWITCH, "light"),
+            UIElement(6, UIType.BUTTON, "eggs"),
+            UIElement(4, UIType.SWITCH, "pressure"),
+            UIElement(7, UIType.SWITCH, "light"),
+            UIElement(6, UIType.BUTTON, "eggs"),            UIElement(4, UIType.SWITCH, "pressure"),
+            UIElement(7, UIType.SWITCH, "light"),
+            UIElement(6, UIType.BUTTON, "eggs"),
         )
         return elementsList
     }
