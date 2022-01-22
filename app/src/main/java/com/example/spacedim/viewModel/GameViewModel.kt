@@ -45,7 +45,7 @@ class GameViewModel : ViewModel() {
  }*/
 
     init {
-        uiElements.value = getUIElements()
+        //uiElements.value = getUIElements()
         ///timer.value = updateTimer()
         //currentAction.value = getAction()
 
