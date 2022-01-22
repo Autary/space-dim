@@ -12,7 +12,9 @@
         tools:layout="@layout/fragment_login" >
         <action
             android:id="@+id/action_loginFragment_to_createRoomFragment"
-            app:destination="@id/createRoomFragment" />
+            app:destination="@id/createRoomFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/createRoomFragment"
@@ -30,7 +32,9 @@
         tools:layout="@layout/fragment_waiting" >
         <action
             android:id="@+id/action_waitingFragment_to_gameFragment"
-            app:destination="@id/gameFragment" />
+            app:destination="@id/gameFragment"
+            app:popUpTo="@id/createRoomFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/gameFragment"
@@ -73,6 +77,6 @@
     <fragment
         android:id="@+id/highScoreFragment"
         android:name="com.example.spacedim.fragment.HighScoreFragment"
-        android:label="fragment_high_score"
+        android:label="@string/top_5"
         tools:layout="@layout/fragment_high_score" />
 </navigation>
