@@ -5,7 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
 import com.example.spacedim.interfaces.LifeCycleLogs
@@ -19,7 +18,7 @@ class WinFragment : Fragment(), LifeCycleLogs {
                               savedInstanceState: Bundle?): View? {
         val binding = FragmentWinBinding.inflate(inflater)
         binding.retryBtn.setOnClickListener { view : View ->
-            view.findNavController().navigate(R.id.action_winFragment_to_waitingFragment)
+            view.findNavController().navigate(R.id.action_winFragment_to_createRoomFragment)
         }
         viewModelLoseViewModel.getItem()?.let { binding.score.setText("Score: "+it.score.toString()) }
         binding.scoreBtn.setOnClickListener { view : View ->

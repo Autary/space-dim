@@ -40,11 +40,11 @@
         <action
             android:id="@+id/action_gameFragment_to_looseFragment"
             app:destination="@id/looseFragment"
-            app:popUpTo="@id/waitingFragment" />
+            app:popUpTo="@id/createRoomFragment" />
         <action
             android:id="@+id/action_gameFragment_to_winFragment"
             app:destination="@id/winFragment"
-            app:popUpTo="@id/waitingFragment" />
+            app:popUpTo="@id/createRoomFragment" />
     </fragment>
     <fragment
         android:id="@+id/looseFragment"
@@ -52,8 +52,8 @@
         android:label="@string/game_loose"
         tools:layout="@layout/fragment_loose" >
         <action
-            android:id="@+id/action_looseFragment_to_waitingFragment"
-            app:destination="@id/waitingFragment" />
+            android:id="@+id/action_looseFragment_to_createRoomFragment"
+            app:destination="@id/createRoomFragment" />
         <action
             android:id="@+id/action_looseFragment_to_highScoreFragment"
             app:destination="@id/highScoreFragment" />
@@ -64,8 +64,8 @@
         android:label="@string/game_win"
         tools:layout="@layout/fragment_win" >
         <action
-            android:id="@+id/action_winFragment_to_waitingFragment"
-            app:destination="@id/waitingFragment" />
+            android:id="@+id/action_winFragment_to_createRoomFragment"
+            app:destination="@id/createRoomFragment" />
         <action
             android:id="@+id/action_winFragment_to_highScoreFragment"
             app:destination="@id/highScoreFragment" />
