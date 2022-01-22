@@ -12,20 +12,40 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/rocketlaunched">
+        android:background="@drawable/bg_waiting">
 
-        <TextView
-            android:id="@+id/mainText"
-            style="@style/activity_title"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:text="@string/set_to_ready"
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="274dp"
+            android:layout_height="185dp"
+            android:contentDescription="@string/logo"
+            android:src="@drawable/logo_waiting_2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/mainText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="42dp"
+            android:layout_marginEnd="42dp"
+            android:shadowColor="#bdbdbd"
+            android:shadowDx="5"
+            android:shadowDy="5"
+            android:shadowRadius="5"
+            android:text="@string/set_to_ready"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/socket_status"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView3"
+            app:layout_constraintVertical_bias="0.093"
+            tools:ignore="TextContrastCheck" />
 
         <Switch
             android:clickable="false"
@@ -34,19 +54,26 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:checked="@{wsViewModel.listener.state}"
+            android:layout_marginBottom="20dp"
+            app:layout_constraintBottom_toTopOf="@+id/playButton"
             app:layout_constraintEnd_toEndOf="@+id/mainText"
-            app:layout_constraintStart_toStartOf="@+id/mainText"
-            app:layout_constraintTop_toBottomOf="@+id/mainText"/>
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toStartOf="@+id/mainText" />
 
         <Button
             android:id="@+id/playButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_width="190dp"
+            android:layout_height="85dp"
+            android:layout_marginBottom="332dp"
+            android:background="@drawable/custom_button_purple"
             android:text="@string/ready"
+            android:textSize="20sp"
+            app:backgroundTint="@null"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/socket_status" />
+            tools:ignore="TextContrastCheck" />
 
         <TextView
             android:id="@+id/roomName"
@@ -57,7 +84,8 @@
             android:textColor="@color/less_visible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/playButton" />
+            app:layout_constraintTop_toBottomOf="@+id/playButton"
+            tools:ignore="TextContrastCheck" />
 
         <ScrollView
             android:id="@+id/playerList"
@@ -72,12 +100,13 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/roomName">
+            app:layout_constraintTop_toBottomOf="@+id/roomName"
+            tools:ignore="SpeakableTextPresentCheck">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <TableLayout
                     android:id="@+id/playersList"
@@ -89,5 +118,6 @@
 
             </LinearLayout>
         </ScrollView>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

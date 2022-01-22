@@ -13,20 +13,62 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/rocketlaunched">
+        android:background="@drawable/bg_waiting">
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="330dp"
+            android:layout_height="330dp"
+            android:contentDescription="@string/logo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/logo_waiting_1" />
 
         <TextView
             android:id="@+id/mainTitle"
-            style="@style/activity_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginStart="42dp"
+            android:layout_marginEnd="42dp"
+            android:fontFamily="sans-serif"
+            android:shadowColor="#bdbdbd"
+            android:shadowDx="5"
+            android:shadowDy="5"
+            android:shadowRadius="5"
             android:text="@string/join_a_room"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/roomInput"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/imageView2"
+            tools:ignore="TextContrastCheck" />
+
+        <EditText
+            android:id="@+id/roomInput"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="42dp"
+            android:layout_marginEnd="42dp"
+            android:background="@drawable/rounded"
+            android:ems="10"
+            android:hint="@string/room_name"
+            android:inputType="textPersonName"
+            android:minHeight="48dp"
+            android:padding="10dp"
+            android:textColor="@color/pink"
+            android:textColorHint="@color/pink"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/fragment"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mainTitle"
+            tools:ignore="TextContrastCheck"
+            android:importantForAutofill="no" />
 
         <Switch
             android:clickable="false"
@@ -37,19 +79,24 @@
             android:checked="@{state}"
             android:minWidth="48dp"
             android:minHeight="48dp"
+            android:layout_marginBottom="4dp"
+            app:layout_constraintBottom_toTopOf="@+id/joinRoom"
             app:layout_constraintEnd_toEndOf="@+id/mainTitle"
-            app:layout_constraintStart_toStartOf="@+id/mainTitle"
-            app:layout_constraintTop_toBottomOf="@+id/mainTitle" />
+            app:layout_constraintStart_toStartOf="@+id/mainTitle" />
 
         <Button
             android:id="@+id/joinRoom"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_width="190dp"
+            android:layout_height="85dp"
+            android:layout_marginBottom="150dp"
+            android:background="@drawable/custom_button_purple"
             android:text="@string/join_room"
-            app:layout_constraintEnd_toEndOf="@+id/socket"
-            app:layout_constraintStart_toStartOf="@+id/socket"
-            app:layout_constraintTop_toBottomOf="@+id/socket" />
+            android:textSize="20sp"
+            app:backgroundTint="@null"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="TextContrastCheck" />
 
         <TextView
             android:id="@+id/joinRoomTxt"
@@ -60,20 +107,7 @@
             android:textColor="@color/less_visible"
             app:layout_constraintEnd_toEndOf="@+id/joinRoom"
             app:layout_constraintStart_toStartOf="@+id/joinRoom"
-            app:layout_constraintTop_toBottomOf="@+id/joinRoom" />
-
-        <EditText
-            android:id="@+id/roomInput"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:ems="10"
-            android:hint="RoomName"
-            android:inputType="textPersonName"
-            android:minHeight="48dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/joinRoomTxt" />
+            app:layout_constraintTop_toBottomOf="@+id/joinRoom"
+            tools:ignore="TextContrastCheck" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

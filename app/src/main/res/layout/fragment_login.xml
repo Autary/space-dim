@@ -34,6 +34,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/rounded"
+                android:inputType="textPersonName"
                 android:textColor="#CB9CCC"
                 android:maxLines="1"
                 android:inputType="text"
@@ -44,31 +45,16 @@
             android:id="@+id/launchButton"
             android:layout_width="190dp"
             android:layout_height="85dp"
-            android:layout_marginBottom="35dp"
+            android:layout_marginBottom="150dp"
             android:background="@drawable/custom_button_purple"
             android:text="@string/launch"
-            android:textColor="#FFFFFF"
-            android:textSize="20sp"
-            app:backgroundTint="@null"
-            app:layout_constraintBottom_toTopOf="@+id/registerButton"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:ignore="TextContrastCheck,DuplicateSpeakableTextCheck" />
-
-        <Button
-            android:id="@+id/registerButton"
-            android:layout_width="190dp"
-            android:layout_height="85dp"
-            android:layout_marginBottom="40dp"
-            android:background="@drawable/custom_button_brown"
-            android:text="@string/register"
             android:textColor="#FFFFFF"
             android:textSize="20sp"
             app:backgroundTint="@null"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            tools:ignore="TextContrastCheck" />
+            tools:ignore="TextContrastCheck,DuplicateSpeakableTextCheck" />
 
         <ImageView
             android:id="@+id/logo"
@@ -95,24 +81,6 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/nameInputLayout"
             app:layout_constraintStart_toStartOf="@+id/nameInputLayout"
-            tools:ignore="TextContrastCheck" />
-
-        <TextView
-            android:id="@+id/emmaChefLandText"
-            android:layout_width="198dp"
-            android:layout_height="18dp"
-            android:layout_marginBottom="5dp"
-            android:shadowColor="#BFBFBF"
-            android:shadowDx="3"
-            android:shadowDy="3"
-            android:shadowRadius="3"
-            android:text="@string/emmachefland"
-            android:textAlignment="center"
-            android:textColor="#F3F1F1"
-            android:textStyle="bold|italic"
-            app:layout_constraintBottom_toTopOf="@+id/registerButton"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
             tools:ignore="TextContrastCheck" />
 
 
