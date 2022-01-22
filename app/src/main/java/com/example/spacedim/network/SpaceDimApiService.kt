@@ -18,7 +18,7 @@ private val retrofit = Retrofit.Builder()
 interface SpaceDimApiService {
 
     //Permets de récupérer tous les utilisateurs
-    @GET("api/users")
+    @GET("api/users?sort=top")
     fun getAllUsers():
             Call<String>
 

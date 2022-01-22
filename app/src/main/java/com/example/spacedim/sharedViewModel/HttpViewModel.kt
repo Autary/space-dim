@@ -10,6 +10,7 @@ import retrofit2.Callback
 import com.example.retrofit.network.SpaceDimApi
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
+import com.squareup.moshi.Types
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Call
 import retrofit2.Response
@@ -21,6 +22,10 @@ class HttpViewModel : ViewModel() {
         .build()
     val adapter: JsonAdapter<User> = moshi.adapter(User::class.java)
 
+    val type = Types.newParameterizedType(List::class.java, User::class.java)
+    val adapterList: JsonAdapter<List<User>> = moshi.adapter(type)
+
+
     private val _user = MutableLiveData<User>()
     val user: LiveData<User> = _user
 
@@ -28,6 +33,8 @@ class HttpViewModel : ViewModel() {
     val eventGoToCreateRoom: LiveData<Boolean>
         get() = _eventGoToCreateRoom
 
+    private val _userList = MutableLiveData<List<User>>()
+    val userList: LiveData<List<User>> = _userList
 
 
     // The internal MutableLiveData String that stores the most recent response
@@ -49,11 +56,11 @@ class HttpViewModel : ViewModel() {
      * Sets the value of the status LiveData to the Mars API status.
      */
     //Exécute la fonction afin d'appeler la requête pour récuperer tout les utilisateurs
-    private fun getAllUsers() {
+    fun getAllUsers() {
         SpaceDimApi.retrofitService.getAllUsers().enqueue(
             object : Callback<String> {
                 override fun onResponse(call: Call<String>, response: Response<String>) {
-                    _response.value = response.body()
+                    _userList.value = adapterList.fromJson(response.body())
                 }
 
                 override fun onFailure(call: Call<String>, t: Throwable) {

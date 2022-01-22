@@ -29,6 +29,10 @@ class LooseFragment : Fragment(), LifeCycleLogs {
             view.findNavController().navigate(R.id.action_looseFragment_to_waitingFragment)
         }
 
+        binding.scoreBtn.setOnClickListener { view : View ->
+            view.findNavController().navigate(R.id.action_looseFragment_to_highScoreFragment)
+        }
+
         viewModelLoseViewModel.getItem()?.let { binding.score.setText("Score: "+it.score.toString()) }
 
 
