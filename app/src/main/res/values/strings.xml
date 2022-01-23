@@ -36,4 +36,5 @@
     <string name="fake_event_txt">Il y a trop de gaz !</string>
     <string name="room">Room name</string>
     <string name="top_5">Top 5 des Emma\'players</string>
+    <string name="score_format">Score : %d</string>
 </resources>

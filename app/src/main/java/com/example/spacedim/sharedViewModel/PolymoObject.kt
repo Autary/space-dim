@@ -24,6 +24,6 @@ object PolymoObject {
         )
         .add(KotlinJsonAdapterFactory())
         .build()
-    val  adapterSpace = moshiSpaceCommunicationSerializer.adapter(Event::class.java)
+    val  adapterSpace: JsonAdapter<Event> = moshiSpaceCommunicationSerializer.adapter(Event::class.java)
 }
 

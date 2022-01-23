@@ -10,22 +10,31 @@ import androidx.navigation.findNavController
 import com.example.spacedim.interfaces.LifeCycleLogs
 import com.example.spacedim.R
 import com.example.spacedim.databinding.FragmentWinBinding
-import com.example.spacedim.viewModel.WinLoseViewModel
+import com.example.spacedim.sharedViewModel.WinLooseViewModel
 
 class WinFragment : Fragment(), LifeCycleLogs {
-    private val viewModelLoseViewModel: WinLoseViewModel by activityViewModels()
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+
+    private val winLooseViewModel: WinLooseViewModel by activityViewModels()
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         val binding = FragmentWinBinding.inflate(inflater)
+
+        binding.winLooseViewModel = winLooseViewModel
+
         binding.retryBtn.setOnClickListener { view : View ->
             view.findNavController().navigate(R.id.action_winFragment_to_createRoomFragment)
         }
-        viewModelLoseViewModel.getItem()?.let { binding.score.setText("Score: "+it.score.toString()) }
+
         binding.scoreBtn.setOnClickListener { view : View ->
             view.findNavController().navigate(R.id.action_winFragment_to_highScoreFragment)
         }
+
         return binding.root
     }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super<Fragment>.onCreate(savedInstanceState)

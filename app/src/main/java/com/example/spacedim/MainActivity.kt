@@ -10,9 +10,11 @@ class MainActivity : AppCompatActivity(), LifeCycleLogs {
     override fun onCreate(savedInstanceState: Bundle?) {
         super<AppCompatActivity>.onCreate(savedInstanceState)
         super<LifeCycleLogs>.onCreate()
+
         setContentView(R.layout.activity_main)
 
         val navCtrl = this.findNavController(R.id.mainNavHostFrag)
+
         // android:label in navigation.xml not working, fix by this code
         navCtrl.addOnDestinationChangedListener{
             ctrl, dest, args -> title = dest.label
@@ -24,6 +26,7 @@ class MainActivity : AppCompatActivity(), LifeCycleLogs {
         val navCtrl = this.findNavController(R.id.mainNavHostFrag)
         return navCtrl.navigateUp()
     }
+
 
     override fun onStart() {
         super<AppCompatActivity>.onStart()

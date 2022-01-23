@@ -10,15 +10,15 @@ import androidx.navigation.findNavController
 import com.example.spacedim.interfaces.LifeCycleLogs
 import com.example.spacedim.R
 import com.example.spacedim.databinding.FragmentLooseBinding
-import com.example.spacedim.viewModel.WinLoseViewModel
+import com.example.spacedim.sharedViewModel.WinLooseViewModel
 
 class LooseFragment : Fragment(), LifeCycleLogs {
-    //private lateinit var viewModelLoseViewModel: WinLoseViewModel
-    private val viewModelLoseViewModel: WinLoseViewModel by activityViewModels()
+
+    private val winLooseViewModel: WinLooseViewModel by activityViewModels()
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val binding = FragmentLooseBinding.inflate(inflater)
-        //viewModelLoseViewModel = ViewModelProvider(this).get(WinLoseViewModel::class.java)
 
         binding.retryBtn.setOnClickListener { view : View ->
             view.findNavController().navigate(R.id.action_looseFragment_to_createRoomFragment)
@@ -28,12 +28,11 @@ class LooseFragment : Fragment(), LifeCycleLogs {
             view.findNavController().navigate(R.id.action_looseFragment_to_highScoreFragment)
         }
 
-        viewModelLoseViewModel.getItem()?.let { binding.score.setText("Score: "+it.score.toString()) }
-
-
+        binding.winLooseViewModel = winLooseViewModel
 
         return binding.root
     }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super<Fragment>.onCreate(savedInstanceState)

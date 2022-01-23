@@ -5,11 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
-import com.example.retrofit.overview.HttpViewModel
+import com.example.spacedim.sharedViewModel.HttpViewModel
 import com.example.spacedim.interfaces.LifeCycleLogs
 import com.example.spacedim.R
 import com.example.spacedim.databinding.FragmentLoginBinding
@@ -25,17 +23,15 @@ class LoginFragment : Fragment(), LifeCycleLogs {
     ): View?{
         val binding = FragmentLoginBinding.inflate(inflater)
 
-        viewModel.eventGoToCreateRoom.observe(viewLifecycleOwner, Observer { goToCreateRoom ->
+        viewModel.eventGoToCreateRoom.observe(viewLifecycleOwner, { goToCreateRoom ->
             if (goToCreateRoom)
                 view?.findNavController()?.navigate(R.id.action_loginFragment_to_createRoomFragment)
         })
 
         binding.launchButton.setOnClickListener {
-            if (!binding.nameInput.text.isNullOrBlank()) {
+            if (!binding.nameInput.text.isNullOrBlank())
                 viewModel.addUser(binding.nameInput.text.toString())
-            }
         }
-
 
         return binding.root
     }

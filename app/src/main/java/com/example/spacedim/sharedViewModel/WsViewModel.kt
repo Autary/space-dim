@@ -1,6 +1,5 @@
 package com.example.spacedim.sharedViewModel
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -8,6 +7,7 @@ import okhttp3.*
 import okio.ByteString
 import java.lang.Exception
 import com.example.spacedim.classes.Event
+import timber.log.Timber
 
 class WsViewModel : ViewModel() {
     private val client = OkHttpClient();
@@ -16,10 +16,9 @@ class WsViewModel : ViewModel() {
     private lateinit var request: Request;
     var room = "";
 
-
     fun createWS(roomName: String, idUser: Int) {
         request = Request.Builder()
-            .url("ws://spacedim.async-agency.com:8081/ws/join/" + roomName + "/" + idUser)
+            .url("ws://spacedim.async-agency.com:8081/ws/join/$roomName/$idUser")
             .build()
         room = roomName
         listener = EchoWebSocketListener()
@@ -37,10 +36,6 @@ class EchoWebSocketListener() : WebSocketListener() {
     val eventGoToPlay: LiveData<Boolean>
         get() = _eventGoToPlay
 
-    private val _eventMessage = MutableLiveData<Event>()
-    val eventMessage: LiveData<Event>
-        get() = _eventMessage
-
     private val _eventGameStarted = MutableLiveData<Event.GameStarted>()
     val eventGameStarted: LiveData<Event.GameStarted>
         get() = _eventGameStarted
@@ -49,33 +44,32 @@ class EchoWebSocketListener() : WebSocketListener() {
     val eventNextAction: LiveData<Event.NextAction>
         get() = _eventNextAction
 
-
-    private val _eventGameOver = MutableLiveData<Event.GameOver>()
-    val eventGameOver: LiveData<Event.GameOver>
-        get() = _eventGameOver
+    private val _eventGameEnded = MutableLiveData<Event.GameOver>()
+    val eventGameEnded: LiveData<Event.GameOver>
+        get() = _eventGameEnded
 
     private val _eventNextLevel = MutableLiveData<Event.NextLevel>()
     val eventNextLevel: LiveData<Event.NextLevel>
         get() = _eventNextLevel
 
+    private val _eventWaitingForPlayers = MutableLiveData<Event.WaitingForPlayer>()
+    val eventWaitingForPlayers: LiveData<Event.WaitingForPlayer>
+        get() = _eventWaitingForPlayers
 
     override fun onOpen(webSocket: WebSocket, response: Response?) {
-       // Log.i(this.javaClass.name, "open")
+       // Timber.i("open")
         _state.postValue(true);
     }
 
     override fun onMessage(webSocket: WebSocket?, bytes: ByteString) {
-        // Log.i(this.javaClass.name, "Receiving bytes : " + bytes.hex())
+        // Timber.i("Receiving bytes : " + bytes.hex())
     }
 
     override fun onMessage(webSocket: WebSocket?, str: String) {
-        Log.i("TESTEEEEE", "Receiving : $str")
-
         try {
             val response = PolymoObject.adapterSpace.fromJson(str)
 
             response?.let {
-                _eventMessage.postValue(it)
                 if (response is Event.GameStarted) {
                     _eventGoToPlay.postValue(true)
                 }
@@ -86,29 +80,32 @@ class EchoWebSocketListener() : WebSocketListener() {
                     _eventNextAction.postValue(response)
                 }
                 if (response is Event.GameOver) {
-                    _eventGameOver.postValue(response)
+                    _eventGameEnded.postValue(response)
                 }
                 if (response is Event.NextLevel) {
                     _eventNextLevel.postValue(response)
                 }
+                if(response is Event.WaitingForPlayer) {
+                    _eventWaitingForPlayers.postValue(response)
+                }
             }
 
-            Log.i(this.javaClass.name, response.toString())
-        } catch (exeption: Exception) {
-            Log.i(this.javaClass.name, exeption.toString())
+            Timber.i(response.toString())
+        } catch (exception: Exception) {
+            Timber.i(exception.toString())
         } catch (exception: Throwable) {
-            Log.e(this.javaClass.name, exception.toString())
+            Timber.e(exception.toString())
         }
     }
 
     override fun onClosing(webSocket: WebSocket, code: Int, reason: String) {
         webSocket.close(NORMAL_CLOSURE_STATUS, null)
-        //Log.i(this.javaClass.name, "Closing : $code / $reason")
+        Timber.i("WS closing : $code / $reason")
         _state.postValue(false);
     }
 
     override fun onFailure(webSocket: WebSocket?, t: Throwable, response: Response?) {
-        //Log.i(this.javaClass.name, "Error : " + t.message)
+        Timber.i("WS Error : " + t.message)
     }
 
     companion object {

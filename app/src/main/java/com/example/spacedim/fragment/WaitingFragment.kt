@@ -1,61 +1,52 @@
 package com.example.spacedim.fragment
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import androidx.core.view.children
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
-import com.example.retrofit.overview.HttpViewModel
-import com.example.spacedim.interfaces.LifeCycleLogs
+import com.example.spacedim.sharedViewModel.HttpViewModel
 import com.example.spacedim.R
 import com.example.spacedim.classes.Event
 import com.example.spacedim.classes.User
 import com.example.spacedim.databinding.FragmentWaitingBinding
 import com.example.spacedim.sharedViewModel.PolymoObject
 import com.example.spacedim.sharedViewModel.WsViewModel
-import com.example.spacedim.viewModel.WaitingViewModel
 
 class WaitingFragment : Fragment() {
 
-    private lateinit var waitingViewModel: WaitingViewModel
     private val viewModel: HttpViewModel by activityViewModels()
     private val wsViewModel: WsViewModel by activityViewModels()
+    private var isReady = false;
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val binding = FragmentWaitingBinding.inflate(inflater)
-
-        waitingViewModel = ViewModelProvider(this).get(WaitingViewModel::class.java)
 
         binding.wsViewModel = wsViewModel
         binding.lifecycleOwner = viewLifecycleOwner
 
-        binding.playButton.setOnClickListener { view: View ->
-
-            val ready = PolymoObject.adapterSpace.toJson(Event.Ready(true))
+        binding.playButton.setOnClickListener {
+            isReady = !isReady
+            val ready = PolymoObject.adapterSpace.toJson(Event.Ready(isReady))
             wsViewModel.ws.send(ready)
-
         }
-        wsViewModel.listener.eventGoToPlay.observe(viewLifecycleOwner, Observer { play ->
+
+        wsViewModel.listener.eventGoToPlay.observe(viewLifecycleOwner, { play ->
             if(play){
                 view?.findNavController()?.navigate(R.id.action_waitingFragment_to_gameFragment)
             }
         })
-        wsViewModel.listener.eventMessage.observe(viewLifecycleOwner, Observer { msg ->
-            if(msg is Event.WaitingForPlayer){
-                setUsers(msg.userList, binding)
-            }
+
+        wsViewModel.listener.eventWaitingForPlayers.observe(viewLifecycleOwner, { waiting ->
+            setUsers(waiting.userList, binding)
         })
+
         return binding.root
     }
 
@@ -68,13 +59,13 @@ class WaitingFragment : Fragment() {
             val name: TextView = view.findViewById(R.id.playerName)
             val status: TextView = view.findViewById(R.id.playerStatus)
 
-            name.setText(it.name)
+            name.text = it.name
 
-            var me = ""
-            if(it.id === viewModel.user.value?.id){
-                me = " (me)"
+            var statut = it.state.name
+            if(it.id == viewModel.user.value?.id){
+                statut = "$statut (me)"
             }
-            status.setText(it.state.name+me)
+            status.text = statut
 
             list.addView(view)
         }

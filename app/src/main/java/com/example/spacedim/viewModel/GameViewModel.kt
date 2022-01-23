@@ -1,25 +1,20 @@
 package com.example.spacedim.viewModel
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.spacedim.classes.UIElement
 import com.example.spacedim.classes.UIType
 import com.example.spacedim.game.Action
+import timber.log.Timber
 
 class GameViewModel : ViewModel() {
-
-
-    // The current score
-
-
+    /* view model used to debug ONLY*/
     var uiElements = MutableLiveData<List<UIElement>>()
     var timer = MutableLiveData<Int>()
     var currentAction = MutableLiveData<Action>()
 
     private lateinit var action: Action
     private lateinit var elementsList: List<UIElement>
-
 
     /* private fun getAction() : Action{
          action = Action("Shake your phone ",UIElement(3, UIType.SHAKE,"") )
@@ -46,23 +41,18 @@ class GameViewModel : ViewModel() {
         return elementsList
     }
 
-/* private fun updateTimer() : Int{
-     var time = 5000
-
-     return time
- }*/
 
     init {
         //uiElements.value = getUIElements()
         ///timer.value = updateTimer()
         //currentAction.value = getAction()
 
-        Log.i("GameViewModel", "GameViewModel created!")
+        Timber.i("GameViewModel created!")
 
     }
 
     override fun onCleared() {
         super.onCleared()
-        Log.i("GameViewModel", "GameViewModel destroyed!")
+        Timber.i("GameViewModel destroyed!")
     }
 }

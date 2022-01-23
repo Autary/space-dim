@@ -1,27 +1,27 @@
 package com.example.spacedim.interfaces
 
-import android.util.Log
+import timber.log.Timber
 
 interface LifeCycleLogs {
     fun onCreate(){
-        // Log.i(this.javaClass.name, "onCreate Called")
+        // Timber.i("onCreate Called")
     }
     fun onStart(){
-        // Log.i(this.javaClass.name, "onStart Called")
+        // Timber.i("onStart Called")
     }
     fun onResume(){
-        // Log.i(this.javaClass.name, "onResume Called")
+        // Timber.i("onResume Called")
     }
     fun onPause(){
-        // Log.i(this.javaClass.name, "onPause Called")
+        // Timber.i("onPause Called")
     }
     fun onStop(){
-        // Log.i(this.javaClass.name, "onStop Called")
+        // Timber.i("onStop Called")
     }
     fun onDestroy(){
-        // Log.i(this.javaClass.name, "onDestroy Called")
+        // Timber.i("onDestroy Called")
     }
     fun onRestart(){
-        // Log.i(this.javaClass.name, "onRestart Called")
+        // Timber.i("onRestart Called")
     }
 }

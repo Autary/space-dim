@@ -1,12 +1,9 @@
-package com.example.retrofit.network
-
-
+package com.example.spacedim.network
 
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.scalars.ScalarsConverterFactory
 import retrofit2.http.*
-
 
 private const val BASE_URL = "https://spacedim.async-agency.com"
 
@@ -17,7 +14,7 @@ private val retrofit = Retrofit.Builder()
 
 interface SpaceDimApiService {
 
-    //Permets de récupérer tous les utilisateurs
+    //Permets de récupérer les meilleurs users
     @GET("api/users?sort=top")
     fun getAllUsers():
             Call<String>
@@ -42,7 +39,6 @@ interface SpaceDimApiService {
     @POST("api/user/register")
     fun addUser(@Body user: String):
             Call<String>
-
 
 }
 
