@@ -28,7 +28,6 @@ class CreateRoomFragment : Fragment(), LifeCycleLogs {
 
         binding.joinRoom.setOnClickListener { view : View ->
             if(!binding.roomInput.text.isNullOrBlank()){
-                // to change
                 viewModel.user.value?.let {
                     wsviewModel.createWS(binding.roomInput.text.toString(), it.id)
                 }
