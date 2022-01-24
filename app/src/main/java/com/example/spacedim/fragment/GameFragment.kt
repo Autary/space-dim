@@ -17,7 +17,7 @@ import com.example.spacedim.databinding.FragmentGameBinding
 import com.example.spacedim.viewModel.GameViewModel
 import android.os.CountDownTimer
 
-import com.example.spacedim.game.Action
+import com.example.spacedim.classes.Action
 import com.github.nisrulz.sensey.Sensey
 import com.github.nisrulz.sensey.ShakeDetector.ShakeListener
 import androidx.fragment.app.activityViewModels

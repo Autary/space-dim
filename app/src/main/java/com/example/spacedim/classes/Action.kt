@@ -1,4 +1,4 @@
-package com.example.spacedim.game
+package com.example.spacedim.classes
 
 import com.example.spacedim.classes.UIElement
 

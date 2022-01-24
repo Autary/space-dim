@@ -1,6 +1,5 @@
 package com.example.spacedim.classes
 
-import com.example.spacedim.game.Action
 import com.squareup.moshi.Json
 
 enum class EventType() {

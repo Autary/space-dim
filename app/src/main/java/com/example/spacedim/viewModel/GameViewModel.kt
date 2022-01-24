@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.spacedim.classes.UIElement
 import com.example.spacedim.classes.UIType
-import com.example.spacedim.game.Action
+import com.example.spacedim.classes.Action
 import timber.log.Timber
 
 class GameViewModel : ViewModel() {
